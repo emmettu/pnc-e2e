@@ -12,7 +12,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>test</mainClass>
+              <mainClass>Test</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -29,7 +29,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>test</mainClass>
+                  <mainClass>Test</mainClass>
                 </transformer>
               </transformers>
             </configuration>
