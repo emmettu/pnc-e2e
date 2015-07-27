@@ -1,12 +1,4 @@
-import org.openqa.selenium.*;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriverService;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import ui.UITester;
-import ui.tasks.tests.ButtonClickTest;
-
-import java.io.File;
-import java.util.concurrent.TimeUnit;
+import ui.tests.ButtonClickTest;
 
 /**
  * Created by eunderhi on 24/07/15.
