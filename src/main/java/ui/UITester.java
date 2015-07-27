@@ -41,6 +41,11 @@ public class UITester {
         WebElement element = driver.findElement(By.xpath(buttonXpath));
         element.click();
     }
+    public void insertInput(String inputName, String inputString){
+        String inputXpath = String.format("//input[@name='%s']", inputName);
+        WebElement element = driver.findElement(By.xpath(inputXpath));
+        element.sendKeys(inputString);
+    }
     public void takeScreenshot() {
         File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         System.out.println(image.getAbsolutePath());
