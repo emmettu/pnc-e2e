@@ -1,12 +1,11 @@
 package ui;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -26,9 +25,19 @@ public class UITester {
         );
         driver = new PhantomJSDriver(caps);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get("http://localhost:8080/pnc-web/#!/configuration");
     }
     public void clickLink(String linkText) {
         WebElement element = driver.findElement(By.linkText(linkText));
         element.click();
+    }
+    public void clickButton(String buttonName) {
+        String buttonXpath = String.format("//button[@title='%s']", buttonName);
+        WebElement element = driver.findElement(By.xpath(buttonXpath));
+        element.click();
+    }
+    public void takeScreenshot() {
+        File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        System.out.println(image.getAbsolutePath());
     }
 }
