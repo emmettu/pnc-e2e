@@ -1,16 +1,22 @@
-import org.openqa.selenium.*;
+package ui;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by eunderhi on 24/07/15.
+ * Created by eunderhi on 27/07/15.
  */
-public class test {
-    public static void main(String[] args) {
+public class UITester {
+
+    WebDriver driver;
+
+    public UITester() {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setJavascriptEnabled(true);
         caps.setCapability("takesScreenshot", true);
@@ -18,17 +24,11 @@ public class test {
                 PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
                 "/usr/bin/phantomjs"
         );
-        WebDriver driver = new PhantomJSDriver(caps);
+        driver = new PhantomJSDriver(caps);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("http://localhost:8080/pnc-web/#!/configuration");
-
-        WebElement element = driver.findElement(By.linkText("pnc-1.0.0.DR1"));
+    }
+    public void clickLink(String linkText) {
+        WebElement element = driver.findElement(By.linkText(linkText));
         element.click();
-
-        element = driver.findElement(By.xpath("//button[@title='Start Build']"));
-        element.click();
-
-        File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        System.out.println(image.getAbsolutePath());
     }
 }
