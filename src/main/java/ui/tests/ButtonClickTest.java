@@ -15,7 +15,8 @@ public class ButtonClickTest {
         Task[] tasks = {
                 tc.linkClick("Configurations"),
                 tc.linkClick("Build Configuration Sets"),
-                tc.buttonClick("Create Build Configuration Set")
+                tc.buttonClick("Create Build Configuration Set"),
+                tc.textInput("name", "teeeeeeeest")
         };
         for(int i = 0; i < tasks.length; i++) {
             tasks[i].complete();

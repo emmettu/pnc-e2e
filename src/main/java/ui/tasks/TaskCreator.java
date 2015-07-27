@@ -23,4 +23,11 @@ public class TaskCreator {
         task.setUITester(tester);
         return task;
     }
+    public Task textInput(String elementName, String text) {
+        TextInputTask task = new TextInputTask();
+        task.setElementName(elementName);
+        task.setText(text);
+        task.setUITester(tester);
+        return task;
+    }
 }
