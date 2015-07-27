@@ -1,6 +1,7 @@
 package ui.tests;
 
 import ui.UITester;
+import ui.tasks.Executor;
 import ui.tasks.Task;
 import ui.tasks.TaskCreator;
 
@@ -18,9 +19,8 @@ public class ButtonClickTest {
                 tc.buttonClick("Create Build Configuration Set"),
                 tc.textInput("name", "teeeeeeeest")
         };
-        for(int i = 0; i < tasks.length; i++) {
-            tasks[i].complete();
-        }
+
+        new Executor(tasks).execute();
         tester.takeScreenshot();
     }
 }
