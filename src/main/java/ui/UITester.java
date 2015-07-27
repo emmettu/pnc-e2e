@@ -13,6 +13,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class UITester {
 
+    private static final int LOAD_WAIT_TIME = 10;
+    private static final String STARTING_URL = "http://localhost:8080/pnc-web/#!/record";
+
     WebDriver driver;
 
     public UITester() {
@@ -24,8 +27,8 @@ public class UITester {
                 "/usr/bin/phantomjs"
         );
         driver = new PhantomJSDriver(caps);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("http://localhost:8080/pnc-web/#!/configuration");
+        driver.manage().timeouts().implicitlyWait(LOAD_WAIT_TIME, TimeUnit.SECONDS);
+        driver.get(STARTING_URL);
     }
     public void clickLink(String linkText) {
         WebElement element = driver.findElement(By.linkText(linkText));
