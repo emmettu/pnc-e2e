@@ -17,4 +17,10 @@ public class TaskCreator {
         task.setUITester(tester);
         return task;
     }
+    public Task linkClick(String elementName) {
+        Task task = new LinkClickTask();
+        task.setElementName(elementName);
+        task.setUITester(tester);
+        return task;
+    }
 }

@@ -1,6 +1,7 @@
 package ui;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class UITester {
 
-    private static final int LOAD_WAIT_TIME = 10;
+    private static final int LOAD_WAIT_TIME = 20;
     private static final String STARTING_URL = "http://localhost:8080/pnc-web/#!/record";
 
     WebDriver driver;
@@ -28,6 +29,7 @@ public class UITester {
         );
         driver = new PhantomJSDriver(caps);
         driver.manage().timeouts().implicitlyWait(LOAD_WAIT_TIME, TimeUnit.SECONDS);
+        driver.manage().window().setSize(new Dimension(1024, 768));
         driver.get(STARTING_URL);
     }
     public void clickLink(String linkText) {

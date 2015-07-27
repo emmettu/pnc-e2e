@@ -8,6 +8,5 @@ public class ButtonClickTask extends TaskImpl{
     @Override
     public void complete() {
         tester.clickButton(elementName);
-        tester.takeScreenshot();
     }
 }
