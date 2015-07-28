@@ -36,7 +36,7 @@ public class UITester {
         driver.get(STARTING_URL);
     }
     public void clickLink(String linkText) {
-        WebElement element = driver.findElement(By.linkText(linkText));
+        WebElement element = findLink(linkText);
         element.click();
     }
     public void clickButton(String buttonName) {
@@ -63,7 +63,9 @@ public class UITester {
         File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         copyImageToScreenShotsDir(image);
     }
-
+    public WebElement findLink(String name) {
+       return driver.findElement(By.linkText(name));
+    }
     private void copyImageToScreenShotsDir(File image) {
         String currentURL = driver.getCurrentUrl().replace('/', '.');
         try {
