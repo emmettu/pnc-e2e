@@ -13,6 +13,7 @@ public class CreateConfigurationSetTest extends UITest{
         tester.clickLink("Build Configuration Sets");
         tester.clickButton("Create Build Configuration Set");
         tester.insertInput("name", "teeest");
+        tester.clickInputButton("Create");
         tester.takeScreenshot();
     }
 }

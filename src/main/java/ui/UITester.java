@@ -55,7 +55,7 @@ public class UITester {
         element.sendKeys(inputString);
     }
     public void clickInputButton(String inputButtonName){
-        String inputButtonXpath = String.format("//input[@name='%s']", inputButtonName);
+        String inputButtonXpath = String.format("//input[@value='%s']", inputButtonName);
         WebElement element = driver.findElement(By.xpath(inputButtonXpath));
         element.click();
     }
