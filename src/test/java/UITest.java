@@ -1,4 +1,5 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import ui.UITester;
 
@@ -16,5 +17,9 @@ public class UITest {
     @After
     public void tearDown() {
         tester.quit();
+    }
+    public void assertConfigurationSetExists(String linkName) {
+        boolean visibility = tester.findLink(linkName).isDisplayed();
+        Assert.assertEquals(visibility, true);
     }
 }
