@@ -1,31 +1,24 @@
-import ui.UITester;
-import ui.tasks.Executor;
-import ui.tasks.Task;
-import ui.tasks.TaskCreator;
+import org.junit.Test;
 
 /**
  * Created by mvaghela on 27/07/15.
  */
 public class ProductsTest extends UITest {
 
-    public static void test() {
-     createProduct();
-    }
+    @Test
+    public void createProduct() {
+        String productName = "Project New Castle Demo Product 2";
 
-    public static void createProduct() {
-        UITester tester = new UITester();
-        TaskCreator tc = new TaskCreator(tester);
-        Task[] tasks = {
-                tc.linkClick("Products"),
-                tc.buttonClick("Create Product"),
-                tc.textInput("name", "Project New Castle Demo Product 2"),
-//                tc.textInput("description", "Demo 2"), // won't work cause its a textarea
-                tc.textInput("abbreviation", "PNC2"),
-                tc.textInput("productCode", "PNC2"),
-                tc.textInput("pgmSystemName", "newcastle2"),
-//                tc.buttonClick("Create") // won't work cause its an input
-        };
-        new Executor(tasks).execute();
-        tester.takeScreenshot();
+        tester.clickLink("Products");
+        tester.clickButton("Create Product");
+        tester.insertInput("name", productName);
+        tester.insertTextareaInput("description", "Demo 2");
+        tester.insertInput("abbreviation", "PNC2");
+        tester.insertInput("productCode", "PNC2");
+        tester.insertInput("pgmSystemName", "newcastle2");
+        tester.clickInputButton("Create");
+        tester.clickLink("Products");
+
+        assertConfigurationSetExists(productName);
     }
 }
