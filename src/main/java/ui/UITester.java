@@ -16,7 +16,7 @@ import org.apache.commons.io.FileUtils;
  */
 public class UITester {
 
-    private static final int LOAD_WAIT_TIME = 20;
+    private static final int LOAD_WAIT_TIME = 5;
     private static final String STARTING_URL = "http://localhost:8080/pnc-web/#!/record";
     private static final String PHANTOMJS_PATH = "/usr/bin/phantomjs";
     private static final String SCREENSHOT_DIR = "./screenshots";
