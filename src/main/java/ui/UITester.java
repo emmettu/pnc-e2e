@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
+
 /**
  * Created by eunderhi on 27/07/15.
  */
@@ -17,6 +19,7 @@ public class UITester {
     private static final int LOAD_WAIT_TIME = 20;
     private static final String STARTING_URL = "http://localhost:8080/pnc-web/#!/record";
     private static final String PHANTOMJS_PATH = "/usr/bin/phantomjs";
+    private static final String SCREENSHOT_DIR = "./screenshots";
 
     WebDriver driver;
 
@@ -41,17 +44,34 @@ public class UITester {
         WebElement element = driver.findElement(By.xpath(buttonXpath));
         element.click();
     }
-    public void insertInput(String inputName, String inputString){
-        String inputXpath = String.format("//input[@name='%s']", inputName);
+    public void insertInput(String elementName, String inputString){
+        String inputXpath = String.format("//input[@name='%s']", elementName);
         WebElement element = driver.findElement(By.xpath(inputXpath));
         element.sendKeys(inputString);
     }
-    public void takeScreenshot() throws IOException{
+    public void insertTextareaInput(String elementName, String inputString){
+        String inputXpath = String.format("//textarea[@name='%s']", elementName);
+        WebElement element = driver.findElement(By.xpath(inputXpath));
+        element.sendKeys(inputString);
+    }
+    public void clickInputButton(String inputButtonName){
+        String inputButtonXpath = String.format("//input[@name='%s']", inputButtonName);
+        WebElement element = driver.findElement(By.xpath(inputButtonXpath));
+        element.click();
+    }
+    public void takeScreenshot() {
         File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        String current_url = driver.getCurrentUrl().replace('/', '.');
-        String fileName = "." +File.separator + "screenshots" + File.separator + current_url;
+        copyImageToScreenShotsDir(image);
+    }
 
-        org.apache.commons.io.FileUtils.copyFile(image, new File(fileName));
+    private void copyImageToScreenShotsDir(File image) {
+        String currentURL = driver.getCurrentUrl().replace('/', '.');
+        try {
+            FileUtils.copyFile(image, new File(SCREENSHOT_DIR, currentURL));
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
     }
     public void quit() {
         driver.quit();
