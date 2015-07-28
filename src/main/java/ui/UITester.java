@@ -49,7 +49,7 @@ public class UITester {
         WebElement element = driver.findElement(By.xpath(inputXpath));
         element.sendKeys(inputString);
     }
-    public void insertTextareaInput(String elementName, String inputString){
+    public void textAreaInput(String elementName, String inputString){
         String inputXpath = String.format("//textarea[@name='%s']", elementName);
         WebElement element = driver.findElement(By.xpath(inputXpath));
         element.sendKeys(inputString);
@@ -59,12 +59,20 @@ public class UITester {
         WebElement element = driver.findElement(By.xpath(inputButtonXpath));
         element.click();
     }
+    public String getParagraphText(String name) {
+        WebElement p = findParagraph(name);
+        return p.getText();
+    }
     public void takeScreenshot() {
         File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         copyImageToScreenShotsDir(image);
     }
     public WebElement findLink(String name) {
        return driver.findElement(By.linkText(name));
+    }
+    public WebElement findParagraph(String name) {
+        String pXpath = String.format("//p[@id='%s']", name);
+        return driver.findElement(By.xpath(pXpath));
     }
     private void copyImageToScreenShotsDir(File image) {
         String currentURL = driver.getCurrentUrl().replace('/', '.');

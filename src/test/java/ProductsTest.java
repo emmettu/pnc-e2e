@@ -1,24 +1,46 @@
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
  * Created by mvaghela on 27/07/15.
  */
 public class ProductsTest extends UITest {
+    private static final String PRODUCT_NAME = "test name";
+    private static final String PRODUCT_DESCRIPTION = "test description";
+    private static final String PRODUCT_ABBREVIATION = "test abbreviation";
+    private static final String PRODUCT_CODE = "test code";
+    private static final String SYSTEM_NAME = "test system name";
 
     @Test
     public void createProduct() {
-        String productName = "Project New Castle Demo Product 2";
-
         tester.clickLink("Products");
         tester.clickButton("Create Product");
-        tester.insertInput("name", productName);
-        tester.insertTextareaInput("description", "Demo 2");
-        tester.insertInput("abbreviation", "PNC2");
-        tester.insertInput("productCode", "PNC2");
-        tester.insertInput("pgmSystemName", "newcastle2");
+        tester.insertInput("name", PRODUCT_NAME);
+        tester.textAreaInput("description", PRODUCT_DESCRIPTION);
+        tester.insertInput("abbreviation", PRODUCT_ABBREVIATION);
+        tester.insertInput("productCode", PRODUCT_CODE);
+        tester.insertInput("pgmSystemName", SYSTEM_NAME);
         tester.clickInputButton("Create");
         tester.clickLink("Products");
 
-        assertConfigurationSetExists(productName);
+        assertConfigurationSetExists(PRODUCT_NAME);
+        tester.takeScreenshot();
+    }
+    @Test
+    public void productInfoCorrect() {
+        tester.clickLink("Products");
+        tester.clickLink(PRODUCT_NAME);
+
+        String productName = tester.getParagraphText("input-name");
+        String productDescription = tester.getParagraphText("input-description");
+        String productAbbreviation = tester.getParagraphText("input-abbreviation");
+        String productCode = tester.getParagraphText("input-productCode");
+        String systemName = tester.getParagraphText("input-pgmSystemName");
+
+        Assert.assertEquals(productName, PRODUCT_NAME);
+        Assert.assertEquals(productDescription, PRODUCT_DESCRIPTION);
+        Assert.assertEquals(productAbbreviation, PRODUCT_ABBREVIATION);
+        Assert.assertEquals(productCode, PRODUCT_CODE);
+        Assert.assertEquals(systemName, SYSTEM_NAME);
     }
 }
