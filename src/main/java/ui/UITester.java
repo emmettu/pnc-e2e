@@ -40,10 +40,20 @@ public class UITester {
         WebElement element = driver.findElement(By.xpath(buttonXpath));
         element.click();
     }
-    public void insertInput(String inputName, String inputString){
-        String inputXpath = String.format("//input[@name='%s']", inputName);
+    public void insertInput(String elementName, String inputString){
+        String inputXpath = String.format("//input[@name='%s']", elementName);
         WebElement element = driver.findElement(By.xpath(inputXpath));
         element.sendKeys(inputString);
+    }
+    public void insertTextareaInput(String elementName, String inputString){
+        String inputXpath = String.format("//textarea[@name='%s']", elementName);
+        WebElement element = driver.findElement(By.xpath(inputXpath));
+        element.sendKeys(inputString);
+    }
+    public void clickInputButton(String inputButtonName){
+        String inputButtonXpath = String.format("//input[@name='%s']", inputButtonName);
+        WebElement element = driver.findElement(By.xpath(inputButtonXpath));
+        element.click();
     }
     public void takeScreenshot() {
         File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);

@@ -1,5 +1,3 @@
-package ui.tests;
-
 import ui.UITester;
 import ui.tasks.Executor;
 import ui.tasks.Task;
@@ -8,7 +6,7 @@ import ui.tasks.TaskCreator;
 /**
  * Created by mvaghela on 27/07/15.
  */
-public class ProductsTest {
+public class ProductsTest extends UITest {
 
     public static void test() {
      createProduct();
