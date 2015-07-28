@@ -6,6 +6,7 @@ import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -45,9 +46,12 @@ public class UITester {
         WebElement element = driver.findElement(By.xpath(inputXpath));
         element.sendKeys(inputString);
     }
-    public void takeScreenshot() {
+    public void takeScreenshot() throws IOException{
         File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        System.out.println(image.getAbsolutePath());
+        String current_url = driver.getCurrentUrl().replace('/', '.');
+        String fileName = "." +File.separator + "screenshots" + File.separator + current_url;
+
+        org.apache.commons.io.FileUtils.copyFile(image, new File(fileName));
     }
     public void quit() {
         driver.quit();
