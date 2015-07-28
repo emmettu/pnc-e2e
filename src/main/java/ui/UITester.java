@@ -15,16 +15,16 @@ public class UITester {
 
     private static final int LOAD_WAIT_TIME = 20;
     private static final String STARTING_URL = "http://localhost:8080/pnc-web/#!/record";
+    private static final String PHANTOMJS_PATH = "/usr/bin/phantomjs";
 
     WebDriver driver;
 
     public UITester() {
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setJavascriptEnabled(true);
         caps.setCapability("takesScreenshot", true);
         caps.setCapability(
                 PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-                "/usr/bin/phantomjs"
+                PHANTOMJS_PATH
         );
         driver = new PhantomJSDriver(caps);
         driver.manage().timeouts().implicitlyWait(LOAD_WAIT_TIME, TimeUnit.SECONDS);
@@ -48,5 +48,8 @@ public class UITester {
     public void takeScreenshot() {
         File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         System.out.println(image.getAbsolutePath());
+    }
+    public void quit() {
+        driver.quit();
     }
 }
