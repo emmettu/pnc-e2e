@@ -62,6 +62,15 @@ public class UITester {
         WebElement element = driver.findElement(By.xpath(inputButtonXpath));
         element.click();
     }
+    public void clickSelect(String ngModel, String value) {
+        String selectXpath = String.format("//select[@ng-model='%s']", ngModel);
+        WebElement element = driver.findElement(By.xpath(selectXpath));
+        element.click();
+
+        String subElementXpath = String.format("//option[@value='%s']", value);
+        WebElement subElement = element.findElement(By.xpath(subElementXpath));
+        subElement.click();
+    }
     public String getParagraphText(String name) {
         WebElement p = findParagraph(name);
         return p.getText();
