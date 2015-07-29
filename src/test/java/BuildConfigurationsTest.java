@@ -30,7 +30,7 @@ public class BuildConfigurationsTest extends UITest {
         tester.insertInput("scmRevision", SCM_REVISION);
         tester.textAreaInput("buildScript", BUILD_SCRIPT);
         tester.clickSelect("createCtrl.products.selected", "0");
-        tester.clickSelect("createCtrl.data.environmentId", "0");
+        tester.clickSelect("createCtrl.data.environmentId", "1");
         tester.clickInputButton("Create");
 //        tester.clickLink("Configurations");
 //        tester.clickLink("Build Configurations");
