@@ -83,6 +83,9 @@ public class UITester {
             e.printStackTrace();
         }
     }
+    public void back() {
+        driver.navigate().back();
+    }
     public void quit() {
         driver.quit();
     }
