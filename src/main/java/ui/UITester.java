@@ -39,6 +39,9 @@ public class UITester {
         WebElement element = findLink(linkText);
         element.click();
     }
+    public WebElement findLink(String name) {
+        return driver.findElement(By.linkText(name));
+    }
     public void clickButton(String buttonName) {
         String buttonXpath = String.format("//button[@title='%s']", buttonName);
         WebElement element = driver.findElement(By.xpath(buttonXpath));
@@ -63,16 +66,13 @@ public class UITester {
         WebElement p = findParagraph(name);
         return p.getText();
     }
-    public void takeScreenshot() {
-        File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        copyImageToScreenShotsDir(image);
-    }
-    public WebElement findLink(String name) {
-       return driver.findElement(By.linkText(name));
-    }
     public WebElement findParagraph(String name) {
         String pXpath = String.format("//p[@id='%s']", name);
         return driver.findElement(By.xpath(pXpath));
+    }
+    public void takeScreenshot() {
+        File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        copyImageToScreenShotsDir(image);
     }
     private void copyImageToScreenShotsDir(File image) {
         String currentURL = driver.getCurrentUrl().replace('/', '.');
