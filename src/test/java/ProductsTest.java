@@ -1,4 +1,5 @@
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -11,7 +12,7 @@ public class ProductsTest extends UITest {
     private static final String PRODUCT_CODE = "test code";
     private static final String SYSTEM_NAME = "test system name";
 
-    @Test
+    @Before
     public void createProduct() {
         tester.clickLink("Products");
         tester.clickButton("Create Product");
@@ -22,13 +23,14 @@ public class ProductsTest extends UITest {
         tester.insertInput("pgmSystemName", SYSTEM_NAME);
         tester.clickInputButton("Create");
         tester.clickLink("Products");
+    }
 
-        assertConfigurationSetExists(PRODUCT_NAME);
-        tester.takeScreenshot();
+    @Test
+    public void productCreated() {
+        assertLinkExists(PRODUCT_NAME);
     }
     @Test
     public void productInfoCorrect() {
-        tester.clickLink("Products");
         tester.clickLink(PRODUCT_NAME);
 
         String productName = tester.getParagraphText("input-name");

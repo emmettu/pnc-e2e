@@ -11,14 +11,14 @@ public class UITest {
     UITester tester;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         tester = new UITester();
     }
     @After
     public void tearDown() {
         tester.quit();
     }
-    public void assertConfigurationSetExists(String linkName) {
+    public void assertLinkExists(String linkName) {
         boolean visibility = tester.findLink(linkName).isDisplayed();
         Assert.assertEquals(visibility, true);
     }
