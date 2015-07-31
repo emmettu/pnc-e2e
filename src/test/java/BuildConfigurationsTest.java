@@ -17,9 +17,13 @@ public class BuildConfigurationsTest extends UITest {
     private static final String DEPENDENCIES = "";
     private static final String PRODUCT_VERSIONS = "";
 
+    @Before
+    public void navigateToPage() {
+        tester.clickLink("Configurations");
+        tester.clickLink("Build Configurations");
+    }
     @Test
     public void createBuildConfiguration() throws IOException{
-//        tester.takeScreenshot();
         tester.clickLink("Configurations");
         tester.clickLink("Build Configurations");
         tester.clickButton("Create Configuration");
@@ -30,34 +34,37 @@ public class BuildConfigurationsTest extends UITest {
         tester.insertInput("scmRevision", SCM_REVISION);
         tester.textAreaInput("buildScript", BUILD_SCRIPT);
         tester.clickSelect("createCtrl.products.selected", "0");
-        tester.clickSelect("createCtrl.data.environmentId", "1");
+        tester.clickSelect("createCtrl.data.environmentId");
         tester.clickInputButton("Create");
-//        tester.clickLink("Configurations");
-//        tester.clickLink("Build Configurations");
-        tester.takeScreenshot();
+        tester.clickLink("Configurations");
+        tester.clickLink("Build Configurations");
     }
-//    @Test
-//    public void buildConfigurationCreated(){assertLinkExists(CONFIGURATION_NAME);}
-//    @Test
-//    public void buildConfigurationInfoCorrect(){
-//        tester.clickLink(CONFIGURATION_NAME);
-//
-//        String configurationName = tester.getParagraphText("input-name");
-//        String configurationProject = tester.getParagraphText("static-project");
-//       // String configuraitonDescription = tester.getParagraphText(""); Can't do this, not a paragraph
-//        String SCMUrl = tester.getParagraphText("input-scm-repo-url");
-//        String SCMRevision = tester.getParagraphText("input-scm-revision");
-//      //  String buildScript = tester.getParagraphText(""); can't do this, not a paragraph
-//      //  String dependences = tester.something("");   this is a div
-//      //  String productVersions = tester.something(""); this is a div
-//
-//        Assert.assertEquals(configurationName, CONFIGURATION_NAME);
-//      //  Assert.assertEquals(configurationProject, something); not sure how to verify this
-//      //  Assert.assertEquals(configurationDescription, CONFIGURATION_DESCRIPTION);
-//        Assert.assertEquals(SCMUrl, SCM_URL);
-//        Assert.assertEquals(SCMRevision, SCM_REVISION);
-//     //   Assert.assertEquals(buildScript, BUILD_SCRIPT);
-//     //   Assert.assertEquals(dependencies, DEPENDENCIES);
-//     //   Assert.assertEquals(productVerions, PRODUCT_VERSIONS);
-//    }
+
+    @Test
+    public void buildConfigurationCreated(){
+        assertLinkExists(CONFIGURATION_NAME);
+    }
+
+    @Test
+    public void buildConfigurationInfoCorrect(){
+        tester.clickLink(CONFIGURATION_NAME);
+
+        String configurationName = tester.getParagraphText("input-name");
+        String configurationProject = tester.getParagraphText("static-project");
+       // String configuraitonDescription = tester.getParagraphText(""); Can't do this, not a paragraph
+        String SCMUrl = tester.getParagraphText("input-scm-repo-url");
+        String SCMRevision = tester.getParagraphText("input-scm-revision");
+      //  String buildScript = tester.getParagraphText(""); can't do this, not a paragraph
+      //  String dependences = tester.something("");   this is a div
+      //  String productVersions = tester.something(""); this is a div
+
+        Assert.assertEquals(configurationName, CONFIGURATION_NAME);
+      //  Assert.assertEquals(configurationProject, something); not sure how to verify this
+      //  Assert.assertEquals(configurationDescription, CONFIGURATION_DESCRIPTION);
+        Assert.assertEquals(SCMUrl, SCM_URL);
+        Assert.assertEquals(SCMRevision, SCM_REVISION);
+     //   Assert.assertEquals(buildScript, BUILD_SCRIPT);
+     //   Assert.assertEquals(dependencies, DEPENDENCIES);
+     //   Assert.assertEquals(productVerions, PRODUCT_VERSIONS);
+    }
 }
