@@ -35,7 +35,7 @@ public class BuildConfigurationsTest extends UITest {
         tester.textAreaInput("buildScript", BUILD_SCRIPT);
         tester.clickSelect("createCtrl.products.selected", "0");
         tester.clickSelect("createCtrl.data.environmentId", 1);
-        tester.clickInputButton("Create");
+        tester.submit();
         tester.clickLink("Configurations");
         tester.clickLink("Build Configurations");
     }

@@ -17,7 +17,7 @@ public class ReleaseTest extends VersionTest {
         tester.clickSelect("releaseCreateUpdateCtrl.productMilestoneId", "2");
         tester.clickSelect("releaseCreateUpdateCtrl.data.supportLevel", SUPPORT_LEVEL);
         tester.insertInput("downloadurl", DOWNLOAD_URL);
-        tester.clickInputButton("Create");
+        tester.submit();
         tester.takeScreenshot();
     }
 }

@@ -15,7 +15,7 @@ public class CreateConfigurationSetTest extends UITest{
         tester.clickLink("Build Configuration Sets");
         tester.clickButton("Create Build Configuration Set");
         tester.insertInput("name", configurationSetName);
-        tester.clickInputButton("Create");
+        tester.submit();
         assertLinkExists(configurationSetName);
         tester.takeScreenshot();
     }

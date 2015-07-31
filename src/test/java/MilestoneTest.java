@@ -14,6 +14,6 @@ public class MilestoneTest extends VersionTest {
         tester.insertInput("version", VERSION_NUMBER);
         tester.insertInput("startingDate", START_DATE);
         tester.insertInput("plannedReleaseDate", RELEASE_DATE);
-        tester.clickInputButton("Create");
+        tester.submit();
     }
 }

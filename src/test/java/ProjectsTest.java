@@ -18,7 +18,7 @@ public class ProjectsTest extends UITest{
         tester.textAreaInput("description", PROJECT_DESCRIPTION);
         tester.insertInput("projectUrl", PROJECT_URL);
         tester.insertInput("issueTrackerUrl", ISSUE_TRACKER_URL);
-        tester.clickInputButton("Create");
+        tester.submit();
         tester.clickLink("Projects");
     }
     @Test

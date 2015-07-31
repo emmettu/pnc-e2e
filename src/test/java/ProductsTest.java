@@ -21,7 +21,7 @@ public class ProductsTest extends UITest {
         tester.insertInput("abbreviation", PRODUCT_ABBREVIATION);
         tester.insertInput("productCode", PRODUCT_CODE);
         tester.insertInput("pgmSystemName", SYSTEM_NAME);
-        tester.clickInputButton("Create");
+        tester.submit();
         tester.clickLink("Products");
     }
 

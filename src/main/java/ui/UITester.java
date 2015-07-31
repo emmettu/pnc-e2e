@@ -57,8 +57,8 @@ public class UITester {
         WebElement element = driver.findElement(By.xpath(inputXpath));
         element.sendKeys(inputString);
     }
-    public void clickInputButton(String inputButtonName){
-        String inputButtonXpath = String.format("//input[@value='%s']", inputButtonName);
+    public void submit(){
+        String inputButtonXpath = "//input[@type='submit']";
         WebElement element = driver.findElement(By.xpath(inputButtonXpath));
         element.click();
     }
@@ -88,6 +88,10 @@ public class UITester {
     public WebElement findParagraph(String name) {
         String pXpath = String.format("//p[@id='%s']", name);
         return driver.findElement(By.xpath(pXpath));
+    }
+    public WebElement findSpan(String name) {
+        String spanXpath = String.format("//span[text()='%s']", name);
+        return driver.findElement(By.xpath(spanXpath));
     }
     public void takeScreenshot() {
         File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
