@@ -106,4 +106,7 @@ public class UITester {
     public void quit() {
         driver.quit();
     }
+    public WebDriver getDriver() {
+        return driver;
+    }
 }
