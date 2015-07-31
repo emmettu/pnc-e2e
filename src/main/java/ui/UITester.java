@@ -71,11 +71,13 @@ public class UITester {
         WebElement subElement = element.findElement(By.xpath(subElementXpath));
         subElement.click();
     }
-    public void clickSelect(String ngModel) {
+    public void clickSelect(String ngModel, int value) {
         String selectXpath = String.format("//select[@ng-model='%s']", ngModel);
         WebElement element = driver.findElement(By.xpath(selectXpath));
         element.click();
-        element.sendKeys(Keys.ARROW_DOWN);
+        for(int i = 0; i < value; i++) {
+            element.sendKeys(Keys.ARROW_DOWN);
+        }
         element.sendKeys(Keys.ENTER);
 
     }

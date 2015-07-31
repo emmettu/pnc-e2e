@@ -6,7 +6,6 @@ import org.junit.Test;
 public class ReleaseTest extends VersionTest {
     private static final String VERSION_NUMBER = "1.12";
     private static final String RELEASE_DATE = "1997/07/04";
-    private static final String FROM_MILESTONE = "1";
     private static final String SUPPORT_LEVEL = "1";
     private static final String DOWNLOAD_URL = "http://test";
 
@@ -15,9 +14,10 @@ public class ReleaseTest extends VersionTest {
         tester.clickButton("Create Release");
         tester.insertInput("version", VERSION_NUMBER);
         tester.insertInput("releaseDate", RELEASE_DATE);
-        tester.clickSelect("releaseCreateUpdateCtrl.productMilestoneId", FROM_MILESTONE);
+        tester.clickSelect("releaseCreateUpdateCtrl.productMilestoneId", "2");
         tester.clickSelect("releaseCreateUpdateCtrl.data.supportLevel", SUPPORT_LEVEL);
         tester.insertInput("downloadurl", DOWNLOAD_URL);
         tester.clickInputButton("Create");
+        tester.takeScreenshot();
     }
 }
