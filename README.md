@@ -1,7 +1,7 @@
 # pnc-e2e
 End to end testing project for Project Newcastle.
 
-![Alt text](http://i.imgur.com/nX2GA6C.jpg "Bob The Plant")
+<img src="http://i.imgur.com/nX2GA6C.jpg " width="250">
 
 #Usage:
 Clone the repo
