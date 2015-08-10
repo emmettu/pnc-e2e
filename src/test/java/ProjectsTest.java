@@ -1,5 +1,6 @@
 import org.junit.*;
 import org.junit.Test;
+import ui.util.Strings;
 
 /**
  * Created by eunderhi on 29/07/15.
@@ -13,13 +14,13 @@ public class ProjectsTest extends UITest{
     @Before
     public void createProject() {
         tester.clickLink("Projects");
-        tester.clickButton("Create Project");
-        tester.insertInput("name", PROJECT_NAME);
-        tester.textAreaInput("description", PROJECT_DESCRIPTION);
+        tester.clickButton(Strings.CREATE_PROJECT);
+        tester.insertInput(Strings.NAME, PROJECT_NAME);
+        tester.textAreaInput(Strings.DESCRIPTION, PROJECT_DESCRIPTION);
         tester.insertInput("projectUrl", PROJECT_URL);
         tester.insertInput("issueTrackerUrl", ISSUE_TRACKER_URL);
         tester.submit();
-        tester.clickLink("Projects");
+        tester.clickLink(Strings.PROJECTS);
     }
     @Test
     public void productCreated() {

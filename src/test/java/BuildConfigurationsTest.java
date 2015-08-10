@@ -22,7 +22,7 @@ public class BuildConfigurationsTest extends UITest {
         tester.clickLink("Configurations");
         tester.clickLink("Build Configurations");
     }
-    @Test
+    @Before
     public void createBuildConfiguration() throws IOException{
         tester.clickLink("Configurations");
         tester.clickLink("Build Configurations");

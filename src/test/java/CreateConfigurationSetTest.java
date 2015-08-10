@@ -10,7 +10,7 @@ public class CreateConfigurationSetTest extends UITest{
     @Test
     public void CreateConfigurationSet() throws IOException{
 
-        String configurationSetName = "teeest";
+        String configurationSetName = "test name";
         tester.clickLink("Configurations");
         tester.clickLink("Build Configuration Sets");
         tester.clickButton("Create Build Configuration Set");

@@ -17,7 +17,7 @@ import org.apache.commons.io.FileUtils;
 public class UITester {
 
     private static final int LOAD_WAIT_TIME = 5;
-    private static final String STARTING_URL = "http://localhost:8080/pnc-web/#!/record";
+    private static final String BASE_URL = "http://localhost:8080/pnc-web/#!/";
     private static final String PHANTOMJS_PATH = "/usr/bin/phantomjs";
     private static final String SCREENSHOT_DIR = "./screenshots";
 
@@ -37,7 +37,7 @@ public class UITester {
         driver = new PhantomJSDriver(caps);
         driver.manage().timeouts().implicitlyWait(LOAD_WAIT_TIME, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1024, 768));
-        driver.get(STARTING_URL);
+        driver.get(BASE_URL);
     }
     public void clickLink(String linkText) {
         WebElement element = findLink(linkText);
@@ -96,6 +96,9 @@ public class UITester {
     public WebElement findSpan(String name) {
         String spanXpath = String.format("//span[text()='%s']", name);
         return driver.findElement(By.xpath(spanXpath));
+    }
+    public void getURL(String URL) {
+        driver.get(BASE_URL + URL);
     }
     public void takeScreenshot() {
         File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
