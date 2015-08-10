@@ -30,6 +30,10 @@ public class UITester {
                 PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
                 PHANTOMJS_PATH
         );
+        String[] phantomArgs = new  String[] {
+            "--webdriver-loglevel=NONE"
+        };
+        caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, phantomArgs);
         driver = new PhantomJSDriver(caps);
         driver.manage().timeouts().implicitlyWait(LOAD_WAIT_TIME, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1024, 768));
