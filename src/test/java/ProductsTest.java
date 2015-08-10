@@ -26,11 +26,8 @@ public class ProductsTest extends UITest {
     }
 
     @Test
-    public void productCreated() {
-        assertLinkExists(PRODUCT_NAME);
-    }
-    @Test
     public void productInfoCorrect() {
+        assertLinkExists(PRODUCT_NAME);
         tester.clickLink(PRODUCT_NAME);
 
         String productName = tester.getParagraphText("input-name");

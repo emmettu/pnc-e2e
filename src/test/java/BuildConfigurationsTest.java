@@ -51,7 +51,7 @@ public class BuildConfigurationsTest extends UITest {
 
         String configurationName = tester.getParagraphText("input-name");
         String configurationProject = tester.getParagraphText("static-project");
-       // String configuraitonDescription = tester.getParagraphText(""); Can't do this, not a paragraph
+        String configuraitonDescription = tester.getParagraphText("input-description");
         String SCMUrl = tester.getParagraphText("input-scm-repo-url");
         String SCMRevision = tester.getParagraphText("input-scm-revision");
       //  String buildScript = tester.getParagraphText(""); can't do this, not a paragraph
@@ -59,8 +59,8 @@ public class BuildConfigurationsTest extends UITest {
       //  String productVersions = tester.something(""); this is a div
 
         Assert.assertEquals(configurationName, CONFIGURATION_NAME);
-      //  Assert.assertEquals(configurationProject, something); not sure how to verify this
-      //  Assert.assertEquals(configurationDescription, CONFIGURATION_DESCRIPTION);
+        Assert.assertEquals(configurationProject, "Project Newcastle Demo Project 1");
+        Assert.assertEquals(configuraitonDescription, CONFIGURATION_DESCRIPTION);
         Assert.assertEquals(SCMUrl, SCM_URL);
         Assert.assertEquals(SCMRevision, SCM_REVISION);
      //   Assert.assertEquals(buildScript, BUILD_SCRIPT);

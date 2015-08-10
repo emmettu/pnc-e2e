@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import ui.util.Credentials;
 
 /**
  * Created by eunderhi on 27/07/15.
@@ -31,41 +32,61 @@ public class UITester {
                 PHANTOMJS_PATH
         );
         String[] phantomArgs = new  String[] {
-            "--webdriver-loglevel=NONE"
+                "--webdriver-loglevel=NONE",
+                "--ssl-protocol=any"
         };
         caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, phantomArgs);
         driver = new PhantomJSDriver(caps);
         driver.manage().timeouts().implicitlyWait(LOAD_WAIT_TIME, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1024, 768));
+        login();
         driver.get(BASE_URL);
+    }
+
+    private void login() {
+        Credentials creds = new Credentials();
+        String username = creds.getUsername();
+        String password = creds.getPassword();
+        String loginUrl = creds.getLoginUrl();
+
+        driver.get(loginUrl);
+        insertInput("username", username);
+        insertInput("password", password);
+        submit();
     }
     public void clickLink(String linkText) {
         WebElement element = findLink(linkText);
         element.click();
     }
+
     public WebElement findLink(String name) {
         return driver.findElement(By.linkText(name));
     }
+
     public void clickButton(String buttonName) {
         String buttonXpath = String.format("//button[@title='%s']", buttonName);
         WebElement element = driver.findElement(By.xpath(buttonXpath));
         element.click();
     }
+
     public void insertInput(String elementName, String inputString){
         String inputXpath = String.format("//input[@name='%s']", elementName);
         WebElement element = driver.findElement(By.xpath(inputXpath));
         element.sendKeys(inputString);
     }
+
     public void textAreaInput(String elementName, String inputString){
         String inputXpath = String.format("//textarea[@name='%s']", elementName);
         WebElement element = driver.findElement(By.xpath(inputXpath));
         element.sendKeys(inputString);
     }
+
     public void submit(){
         String inputButtonXpath = "//input[@type='submit']";
         WebElement element = driver.findElement(By.xpath(inputButtonXpath));
         element.click();
     }
+
     public void clickSelect(String ngModel, String value) {
         String selectXpath = String.format("//select[@ng-model='%s']", ngModel);
         WebElement element = driver.findElement(By.xpath(selectXpath));
@@ -75,6 +96,7 @@ public class UITester {
         WebElement subElement = element.findElement(By.xpath(subElementXpath));
         subElement.click();
     }
+
     public void clickSelect(String ngModel, int value) {
         String selectXpath = String.format("//select[@ng-model='%s']", ngModel);
         WebElement element = driver.findElement(By.xpath(selectXpath));
@@ -85,25 +107,31 @@ public class UITester {
         element.sendKeys(Keys.ENTER);
 
     }
+
     public String getParagraphText(String name) {
         WebElement p = findParagraph(name);
         return p.getText();
     }
+
     public WebElement findParagraph(String name) {
         String pXpath = String.format("//p[@id='%s']", name);
         return driver.findElement(By.xpath(pXpath));
     }
+
     public WebElement findSpan(String name) {
         String spanXpath = String.format("//span[text()='%s']", name);
         return driver.findElement(By.xpath(spanXpath));
     }
+
     public void getURL(String URL) {
         driver.get(BASE_URL + URL);
     }
+
     public void takeScreenshot() {
         File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         copyImageToScreenShotsDir(image);
     }
+
     private void copyImageToScreenShotsDir(File image) {
         String currentURL = driver.getCurrentUrl().replace('/', '.');
         try {
@@ -113,12 +141,15 @@ public class UITester {
             e.printStackTrace();
         }
     }
+
     public void back() {
         driver.navigate().back();
     }
+
     public void quit() {
         driver.quit();
     }
+
     public WebDriver getDriver() {
         return driver;
     }

@@ -9,7 +9,7 @@ public class ReleaseTest extends MilestoneVersionTest {
     private static final String MILESTONE = "2";
     private static final int SUPPORT_LEVEL = 2;
     private static final String DOWNLOAD_URL = "http://test";
-    private static final String VERION_URL = "product/1/version/1";
+    private static final String VERSION_URL = "product/1/version/1";
 
     @Test
     public void createRelease() {
@@ -20,7 +20,8 @@ public class ReleaseTest extends MilestoneVersionTest {
         tester.clickSelect("releaseCreateUpdateCtrl.data.supportLevel", SUPPORT_LEVEL);
         tester.insertInput("downloadurl", DOWNLOAD_URL);
         tester.submit();
-        tester.getURL(VERION_URL);
+        tester.getURL(VERSION_URL);
+        tester.takeScreenshot();
         tester.findSpan("1.0.1.15");
     }
 }
