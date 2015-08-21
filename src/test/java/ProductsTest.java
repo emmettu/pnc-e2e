@@ -22,14 +22,12 @@ public class ProductsTest extends UITest {
         tester.insertInput("productCode", PRODUCT_CODE);
         tester.insertInput("pgmSystemName", SYSTEM_NAME);
         tester.submit();
-        tester.clickLink("Products");
     }
 
     @Test
     public void productInfoCorrect() {
-        assertLinkExists(PRODUCT_NAME);
-        tester.clickLink(PRODUCT_NAME);
 
+        tester.takeScreenshot();
         String productName = tester.getParagraphText("input-name");
         String productDescription = tester.getParagraphText("input-description");
         String productAbbreviation = tester.getParagraphText("input-abbreviation");

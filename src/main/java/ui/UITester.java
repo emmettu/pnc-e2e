@@ -1,6 +1,7 @@
 package ui;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.support.ui.Select;
 import ui.util.Credentials;
 
 /**
@@ -17,7 +19,7 @@ import ui.util.Credentials;
  */
 public class UITester {
 
-    private static final int LOAD_WAIT_TIME = 5;
+    private static final int LOAD_WAIT_TIME = 20;
     private static final String BASE_URL = "http://localhost:8080/pnc-web/#!/";
     private static final String PHANTOMJS_PATH = "/usr/bin/phantomjs";
     private static final String SCREENSHOT_DIR = "./screenshots";
@@ -37,10 +39,10 @@ public class UITester {
         };
         caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, phantomArgs);
         driver = new PhantomJSDriver(caps);
+        //driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(LOAD_WAIT_TIME, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1024, 768));
         login();
-        driver.get(BASE_URL);
     }
 
     private void login() {
@@ -108,6 +110,20 @@ public class UITester {
 
     }
 
+    public void clickFirstNonEmptySelect(String ngModel) {
+        String selectXpath = String.format("//select[@ng-model='%s']", ngModel);
+        WebElement element = driver.findElement(By.xpath(selectXpath));
+        element.click();
+        Select select = new Select(element);
+        String text = select.getFirstSelectedOption().getText();
+        while(text.trim().length() <= 0) {
+            element.sendKeys(Keys.ARROW_DOWN);
+            text = select.getFirstSelectedOption().getText();
+        }
+        element.sendKeys(Keys.ENTER);
+
+    }
+
     public String getParagraphText(String name) {
         WebElement p = findParagraph(name);
         return p.getText();
@@ -133,7 +149,7 @@ public class UITester {
     }
 
     private void copyImageToScreenShotsDir(File image) {
-        String currentURL = driver.getCurrentUrl().replace('/', '.');
+        String currentURL = driver.getCurrentUrl().replace('/', '!') + ".png";
         try {
             FileUtils.copyFile(image, new File(SCREENSHOT_DIR, currentURL));
         }

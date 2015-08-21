@@ -5,22 +5,23 @@ import org.junit.Test;
  */
 public class ReleaseTest extends MilestoneVersionTest {
     private static final String VERSION_NUMBER = "1.15";
-    private static final String RELEASE_DATE = "1997/07/04";
+    private static final String RELEASE_DATE = "2015/07/04";
     private static final String MILESTONE = "2";
     private static final int SUPPORT_LEVEL = 2;
     private static final String DOWNLOAD_URL = "http://test";
-    private static final String VERSION_URL = "product/1/version/1";
+    //private static final String VERSION_URL = "product/1/version/1";
 
     @Test
     public void createRelease() {
         tester.clickButton("Create Release");
         tester.insertInput("version", VERSION_NUMBER);
         tester.insertInput("releaseDate", RELEASE_DATE);
-        tester.clickSelect("releaseCreateUpdateCtrl.productMilestoneId", MILESTONE);
-        tester.clickSelect("releaseCreateUpdateCtrl.data.supportLevel", SUPPORT_LEVEL);
+        //tester.clickSelect("releaseCreateUpdateCtrl.productMilestoneId", MILESTONE);
+        tester.clickFirstNonEmptySelect("releaseCreateUpdateCtrl.productMilestoneId");
+        tester.clickFirstNonEmptySelect("releaseCreateUpdateCtrl.data.supportLevel");
         tester.insertInput("downloadurl", DOWNLOAD_URL);
         tester.submit();
-        tester.getURL(VERSION_URL);
+        //tester.getURL(VERSION_URL);
         tester.takeScreenshot();
         tester.findSpan("1.0.1.15");
     }
