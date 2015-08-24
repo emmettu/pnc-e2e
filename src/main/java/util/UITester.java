@@ -1,4 +1,4 @@
-package ui;
+package util;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -12,7 +12,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.support.ui.Select;
-import ui.util.Credentials;
 
 /**
  * Created by eunderhi on 27/07/15.
@@ -39,23 +38,33 @@ public class UITester {
         };
         caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, phantomArgs);
         driver = new PhantomJSDriver(caps);
-        //driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(LOAD_WAIT_TIME, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1024, 768));
-        login();
+        loginOrGoToBaseURL();
     }
 
-    private void login() {
+    private void loginOrGoToBaseURL() {
         Credentials creds = new Credentials();
-        String username = creds.getUsername();
-        String password = creds.getPassword();
-        String loginUrl = creds.getLoginUrl();
 
-        driver.get(loginUrl);
+        if(creds.hasLoginURL()) {
+            String loginURL = creds.getLoginURL();
+            String username = creds.getUsername();
+            String password = creds.getPassword();
+            login(loginURL, username, password);
+        }
+        else {
+            String baseURL = creds.getBaseURL();
+            driver.get(baseURL);
+        }
+    }
+
+    private void login(String loginURL, String username, String password) {
+        driver.get(loginURL);
         insertInput("username", username);
         insertInput("password", password);
         submit();
     }
+
     public void clickLink(String linkText) {
         WebElement element = findLink(linkText);
         element.click();

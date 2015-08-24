@@ -1,6 +1,6 @@
 import org.junit.*;
 import org.junit.Test;
-import ui.util.Strings;
+import util.Strings;
 
 /**
  * Created by eunderhi on 29/07/15.

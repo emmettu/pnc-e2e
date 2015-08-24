@@ -1,7 +1,7 @@
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import ui.UITester;
+import util.UITester;
 
 /**
  * Created by eunderhi on 28/07/15.
