@@ -45,6 +45,7 @@ public class Credentials {
         String filePath = getFilePath();
         reader = new BufferedReader(getFileReader(filePath));
         readAllLines();
+        validateMap();
     }
 
     private String getFilePath() {
@@ -93,5 +94,12 @@ public class Credentials {
         }
 
         valueMap.put(key, value);
+    }
+
+    private void validateMap() {
+        if(!valueMap.containsKey(LOGIN_URL_KEY) && !valueMap.containsKey(BASE_URL_KEY)) {
+            throw new IllegalArgumentException(
+                    "login url or base url must be defined in the credentials file: " + getFilePath());
+        }
     }
 }
