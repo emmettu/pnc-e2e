@@ -38,6 +38,7 @@ public class UITester {
         };
         caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, phantomArgs);
         driver = new PhantomJSDriver(caps);
+        //driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(LOAD_WAIT_TIME, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1024, 768));
         loginOrGoToBaseURL();
@@ -125,12 +126,20 @@ public class UITester {
         element.click();
         Select select = new Select(element);
         String text = select.getFirstSelectedOption().getText();
+
         while(text.trim().length() <= 0) {
             element.sendKeys(Keys.ARROW_DOWN);
             text = select.getFirstSelectedOption().getText();
         }
+
         element.sendKeys(Keys.ENTER);
 
+    }
+
+    public void clickCheckBox() {
+        String checkBoxXpath = "//input[@type='checkbox']";
+        WebElement element = driver.findElement(By.xpath(checkBoxXpath));
+        element.click();
     }
 
     public String getParagraphText(String name) {

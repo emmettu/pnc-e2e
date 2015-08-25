@@ -17,7 +17,7 @@ public class ReleaseTest extends MilestoneVersionTest {
         tester.clickFirstNonEmptySelect("releaseCreateUpdateCtrl.data.supportLevel");
         tester.insertInput("downloadurl", DOWNLOAD_URL);
         tester.submit();
-        tester.takeScreenshot();
         tester.findSpan("1.0.1.15");
+        tester.takeScreenshot();
     }
 }
