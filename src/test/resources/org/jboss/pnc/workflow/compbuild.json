@@ -1,0 +1,15 @@
+{
+"GAV" : "org.artificer:artificer:1.0.0.Beta1",
+"Description" : "a test",
+"SCM" : "https://github.com/ArtificerRepo/artificer.git",
+"Tag" : "artificer-1.0.0.Beta1-IDP-1",
+"JavaVersion" : "1.7.0_55",
+"MavenVersion" : "3.1.1",
+"BuildCommand" : "mvn -Pgenerate-docs",
+"CommandLineParams" : "-Xmx950m -XX:MaxPermSize=256m -Dmaven.artifact.threads=5",
+"BuildArtifactsRequired" : "JBoss EAP 6.4",
+"CommunityBuild" : "false",
+"PatchBuild" : "false",
+"ProjectId" : 1,
+"EnvironmentId" : 1
+}
