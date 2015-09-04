@@ -16,6 +16,7 @@ public class Credentials {
     private static final String BASE_URL_KEY = "base url";
     private static final String USERNAME_KEY = "username";
     private static final String PASSWORD_KEY = "password";
+    private static final String PHANTOMJS_PATH_KEY = "phantomjs path";
     private static final String DEFAULT_PATH = "credentials.conf";
 
     BufferedReader reader;
@@ -35,6 +36,10 @@ public class Credentials {
 
     public String getBaseURL() {
         return valueMap.get(BASE_URL_KEY);
+    }
+
+    public String getPhantomjsPath() {
+        return valueMap.get(PHANTOMJS_PATH_KEY);
     }
 
     public boolean hasLoginURL() {

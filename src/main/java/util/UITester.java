@@ -18,8 +18,9 @@ import org.openqa.selenium.support.ui.Select;
  */
 public class UITester {
 
+    private Credentials creds = new Credentials();
     private static final int LOAD_WAIT_TIME = 20;
-    private static final String PHANTOMJS_PATH = "/usr/bin/phantomjs";
+    private String phantomjsPath = creds.getPhantomjsPath();
     private static final String SCREENSHOT_DIR = "./screenshots";
 
     WebDriver driver;
@@ -29,7 +30,7 @@ public class UITester {
         caps.setCapability("takesScreenshot", true);
         caps.setCapability(
                 PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-                PHANTOMJS_PATH
+                phantomjsPath
         );
         String[] phantomArgs = new  String[] {
                 "--webdriver-loglevel=NONE",
@@ -44,8 +45,6 @@ public class UITester {
     }
 
     private void loginOrGoToBaseURL() {
-        Credentials creds = new Credentials();
-
         if(creds.hasLoginURL()) {
             String loginURL = creds.getLoginURL();
             String username = creds.getUsername();
