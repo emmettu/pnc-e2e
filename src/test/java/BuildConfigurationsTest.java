@@ -28,12 +28,12 @@ public class BuildConfigurationsTest extends UITest {
         tester.clickLink("Build Configurations");
         tester.clickButton("Create Configuration");
         tester.insertInput("name", CONFIGURATION_NAME);
-        tester.clickSelect("createCtrl.data.projectId", "1");
+        tester.clickSelect("createCtrl.data.projectId", 2);
         tester.textAreaInput("description", CONFIGURATION_DESCRIPTION);
         tester.insertInput("scmRepoURL", SCM_URL);
         tester.insertInput("scmRevision", SCM_REVISION);
         tester.textAreaInput("buildScript", BUILD_SCRIPT);
-        tester.clickSelect("createCtrl.products.selected", "0");
+        tester.clickSelect("createCtrl.products.selected", 1);
         tester.clickSelect("createCtrl.data.environmentId", 1);
         tester.submit();
         tester.clickLink("Configurations");
@@ -59,7 +59,6 @@ public class BuildConfigurationsTest extends UITest {
       //  String productVersions = tester.something(""); this is a div
 
         Assert.assertEquals(configurationName, CONFIGURATION_NAME);
-        Assert.assertEquals(configurationProject, "Project Newcastle Demo Project 1");
         Assert.assertEquals(configuraitonDescription, CONFIGURATION_DESCRIPTION);
         Assert.assertEquals(SCMUrl, SCM_URL);
         Assert.assertEquals(SCMRevision, SCM_REVISION);

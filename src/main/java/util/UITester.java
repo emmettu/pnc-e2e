@@ -19,7 +19,6 @@ import org.openqa.selenium.support.ui.Select;
 public class UITester {
 
     private static final int LOAD_WAIT_TIME = 20;
-    private static final String BASE_URL = "http://localhost:8080/pnc-web/#!/";
     private static final String PHANTOMJS_PATH = "/usr/bin/phantomjs";
     private static final String SCREENSHOT_DIR = "./screenshots";
 
@@ -155,10 +154,6 @@ public class UITester {
     public WebElement findSpan(String name) {
         String spanXpath = String.format("//span[text()='%s']", name);
         return driver.findElement(By.xpath(spanXpath));
-    }
-
-    public void getURL(String URL) {
-        driver.get(BASE_URL + URL);
     }
 
     public void takeScreenshot() {

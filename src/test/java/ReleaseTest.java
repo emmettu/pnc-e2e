@@ -13,8 +13,8 @@ public class ReleaseTest extends MilestoneVersionTest {
         tester.clickButton("Create Release");
         tester.insertInput("version", VERSION_NUMBER);
         tester.insertInput("releaseDate", RELEASE_DATE);
-        tester.clickFirstNonEmptySelect("releaseCreateUpdateCtrl.productMilestoneId");
         tester.clickFirstNonEmptySelect("releaseCreateUpdateCtrl.data.supportLevel");
+        //tester.clickFirstNonEmptySelect("releaseCreateUpdateCtrl.productMilestoneId");
         tester.insertInput("downloadurl", DOWNLOAD_URL);
         tester.submit();
         tester.findSpan("1.0.1.15");
