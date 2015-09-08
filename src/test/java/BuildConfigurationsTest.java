@@ -3,13 +3,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Random;
 
 
 /**
  * Created by mvaghela on 29/07/15.
  */
 public class BuildConfigurationsTest extends UITest {
-    private static final String CONFIGURATION_NAME = "test name";
+    private static String configurationName;
     private static final String CONFIGURATION_DESCRIPTION = "test description";
     private static final String SCM_URL = "test abbreviation";
     private static final String SCM_REVISION = "test code";
@@ -24,10 +25,13 @@ public class BuildConfigurationsTest extends UITest {
     }
     @Before
     public void createBuildConfiguration() throws IOException{
+        int randomConfigurationId = new Random().nextInt(1000000);
+        configurationName = String.valueOf(randomConfigurationId);
+
         tester.clickLink("Configurations");
         tester.clickLink("Build Configurations");
         tester.clickButton("Create Configuration");
-        tester.insertInput("name", CONFIGURATION_NAME);
+        tester.insertInput("name", configurationName);
         tester.clickSelect("createCtrl.data.projectId", 2);
         tester.textAreaInput("description", CONFIGURATION_DESCRIPTION);
         tester.insertInput("scmRepoURL", SCM_URL);
@@ -42,12 +46,12 @@ public class BuildConfigurationsTest extends UITest {
 
     @Test
     public void buildConfigurationCreated(){
-        assertLinkExists(CONFIGURATION_NAME);
+        assertLinkExists(configurationName);
     }
 
     @Test
     public void buildConfigurationInfoCorrect(){
-        tester.clickLink(CONFIGURATION_NAME);
+        tester.clickLink(configurationName);
 
         String configurationName = tester.getParagraphText("input-name");
         String configurationProject = tester.getParagraphText("static-project");
@@ -58,7 +62,7 @@ public class BuildConfigurationsTest extends UITest {
       //  String dependences = tester.something("");   this is a div
       //  String productVersions = tester.something(""); this is a div
 
-        Assert.assertEquals(configurationName, CONFIGURATION_NAME);
+        Assert.assertEquals(configurationName, configurationName);
         Assert.assertEquals(configuraitonDescription, CONFIGURATION_DESCRIPTION);
         Assert.assertEquals(SCMUrl, SCM_URL);
         Assert.assertEquals(SCMRevision, SCM_REVISION);

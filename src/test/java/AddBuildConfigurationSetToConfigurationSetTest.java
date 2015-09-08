@@ -1,5 +1,4 @@
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 /**
  * Created by eunderhi on 31/08/15.
@@ -8,7 +7,7 @@ public class AddBuildConfigurationSetToConfigurationSetTest extends Configuratio
 
     @Test
     public void addBuildConfiguration() {
-        tester.clickLink(CONFIGURATION_SET_NAME);
+        tester.clickLink(configurationSetName);
         tester.clickButton("Add an existing Build Configuration");
         tester.clickFirstNonEmptySelect("addConfigurationSetCtrl.data.selectedProjectId");
         tester.clickCheckBox();

@@ -9,10 +9,10 @@ public class BuildRecordTest extends ConfigurationSetTest {
 
     @Test
     public void addBuildTest() throws IOException {
-        tester.clickLink(CONFIGURATION_SET_NAME);
+        tester.clickLink(configurationSetName);
         tester.clickButton("Start Build");
         tester.clickLink("Builds");
         tester.clickLink("Builds Records");
-        assertLinkExists(CONFIGURATION_SET_NAME);
+        assertLinkExists(configurationSetName);
     }
 }

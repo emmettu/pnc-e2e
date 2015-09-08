@@ -2,20 +2,24 @@ import org.junit.*;
 import org.junit.Test;
 import util.Strings;
 
+import java.util.Random;
+
 /**
  * Created by eunderhi on 29/07/15.
  */
 public class ProjectsTest extends UITest{
-    private static final String PROJECT_NAME = "test name";
+    private static  String projectName;
     private static final String PROJECT_DESCRIPTION = "test description";
     private static final String PROJECT_URL = "http://test";
     private static final String ISSUE_TRACKER_URL = "http://test";
 
     @Before
     public void createProject() {
+        int randomProjectId = new Random().nextInt(1000000);
+        projectName = String.valueOf(randomProjectId);
         tester.clickLink("Projects");
         tester.clickButton(Strings.CREATE_PROJECT);
-        tester.insertInput(Strings.NAME, PROJECT_NAME);
+        tester.insertInput(Strings.NAME, projectName);
         tester.textAreaInput(Strings.DESCRIPTION, PROJECT_DESCRIPTION);
         tester.insertInput("projectUrl", PROJECT_URL);
         tester.insertInput("issueTrackerUrl", ISSUE_TRACKER_URL);
@@ -24,18 +28,18 @@ public class ProjectsTest extends UITest{
     }
     @Test
     public void productCreated() {
-        assertLinkExists(PROJECT_NAME);
+        tester.clickLink("Projects");
+        assertLinkExists(projectName);
     }
     @Test
     public void productInfoCorrect() {
-        tester.clickLink(PROJECT_NAME);
 
         String productName = tester.getParagraphText("input-name");
         String productDescription = tester.getParagraphText("static-description");
         String productAbbreviation = tester.getParagraphText("input-url");
         String productCode = tester.getParagraphText("input-issue-tracker");
 
-        Assert.assertEquals(productName, PROJECT_NAME);
+        Assert.assertEquals(productName, projectName);
         Assert.assertEquals(productDescription, PROJECT_DESCRIPTION);
         Assert.assertEquals(productAbbreviation, PROJECT_URL);
         Assert.assertEquals(productCode, ISSUE_TRACKER_URL);
