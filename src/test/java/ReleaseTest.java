@@ -1,3 +1,4 @@
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Test;
 
 /**
@@ -14,7 +15,7 @@ public class ReleaseTest extends MilestoneVersionTest {
         tester.textInput("version", VERSION_NUMBER);
         tester.textInput("releaseDate", RELEASE_DATE);
         tester.clickFirstNonEmptySelect("releaseCreateUpdateCtrl.data.supportLevel");
-        //tester.clickFirstNonEmptySelect("releaseCreateUpdateCtrl.productMilestoneId");
+        tester.clickFirstNonEmptySelect("releaseCreateUpdateCtrl.productMilestoneId");
         tester.textInput("downloadurl", DOWNLOAD_URL);
         tester.submit();
         tester.findSpan("1.0.1.15");

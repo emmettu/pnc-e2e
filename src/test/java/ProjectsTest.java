@@ -9,6 +9,7 @@ import java.util.Random;
  * Created by eunderhi on 29/07/15.
  */
 public class ProjectsTest extends UITest{
+
     private static  String projectName;
     private static final String PROJECT_DESCRIPTION = "test description";
     private static final String PROJECT_URL = "http://test";
@@ -24,15 +25,10 @@ public class ProjectsTest extends UITest{
         tester.textInput("projectUrl", PROJECT_URL);
         tester.textInput("issueTrackerUrl", ISSUE_TRACKER_URL);
         tester.submit();
-        tester.clickLink(Strings.PROJECTS);
     }
+
     @Test
-    public void productCreated() {
-        tester.clickLink("Projects");
-        assertLinkExists(projectName);
-    }
-    @Test
-    public void productInfoCorrect() {
+    public void projectInfoCorrect() {
 
         String productName = tester.getParagraphText("input-name");
         String productDescription = tester.getParagraphText("static-description");
@@ -44,4 +40,11 @@ public class ProjectsTest extends UITest{
         Assert.assertEquals(productAbbreviation, PROJECT_URL);
         Assert.assertEquals(productCode, ISSUE_TRACKER_URL);
     }
+
+    @Test
+    public void projectCreated() {
+        tester.clickLink("Projects");
+        assertLinkExists(projectName);
+    }
+
 }

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class SetUpOperator extends Operator {
 
     private Credentials creds = new Credentials();
-    private static final int LOAD_WAIT_TIME = 20;
+    private static final int LOAD_WAIT_TIME = 5;
     private String phantomjsPath = creds.getPhantomjsPath();
 
     public void setUp() {
