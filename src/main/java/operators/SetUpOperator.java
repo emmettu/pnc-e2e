@@ -3,6 +3,7 @@ package operators;
 import operators.base.Operator;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import util.Credentials;
@@ -31,8 +32,8 @@ public class SetUpOperator extends Operator {
                 "--ssl-protocol=any"
         };
         caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, phantomArgs);
-        //driver = new PhantomJSDriver(caps);
-        driver = new FirefoxDriver();
+        driver = new PhantomJSDriver();
+        //driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(LOAD_WAIT_TIME, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1024, 768));
         loginOrGoToBaseURL();
@@ -50,4 +51,5 @@ public class SetUpOperator extends Operator {
             driver.get(baseURL);
         }
     }
+
 }

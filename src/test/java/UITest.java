@@ -22,8 +22,16 @@ public class UITest {
     public void tearDown() {
         tester.quit();
     }
+
     public void assertLinkExists(String linkName) {
         boolean visibility = tester.getDriver().findElement(By.linkText(linkName)).isDisplayed();
         Assert.assertEquals(visibility, true);
     }
+
+
+    public void asserBuildRecordExists(String recordName) {
+        boolean visibility = tester.getDriver().findElement(By.partialLinkText(recordName)).isDisplayed();
+        Assert.assertEquals(visibility, true);
+    }
+
 }

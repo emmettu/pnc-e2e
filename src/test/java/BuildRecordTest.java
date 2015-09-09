@@ -12,7 +12,8 @@ public class BuildRecordTest extends ConfigurationSetTest {
         tester.clickLink(configurationSetName);
         tester.clickButton("Start Build");
         tester.clickLink("Builds");
-        tester.clickLink("Builds Records");
-        assertLinkExists(configurationSetName);
+        tester.clickLink("Build Configuration Set Records");
+        asserBuildRecordExists(configurationSetName);
     }
+
 }

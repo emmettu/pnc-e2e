@@ -11,4 +11,5 @@ public class VersionTest extends UITest {
         tester.clickLink("Project Newcastle Demo Product"); //will eventually need to be replaced
         tester.clickLink("1.0");
     }
+
 }
