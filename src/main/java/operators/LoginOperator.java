@@ -1,4 +1,8 @@
-package tasks;
+package operators;
+
+import operators.base.Operator;
+import operators.base.SubmitOperator;
+import operators.base.TextInputOperator;
 
 /**
  * Created by eunderhi on 09/09/15.

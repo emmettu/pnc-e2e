@@ -1,5 +1,6 @@
-package tasks;
+package operators;
 
+import operators.base.Operator;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;

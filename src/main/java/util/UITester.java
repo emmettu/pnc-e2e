@@ -1,21 +1,14 @@
 package util;
 
+import operators.base.*;
 import org.openqa.selenium.*;
 
-import java.io.File;
-import java.io.IOException;
-
-import org.apache.commons.io.FileUtils;
-import tasks.*;
+import operators.*;
 
 /**
  * Created by eunderhi on 27/07/15.
  */
 public class UITester {
-
-    private static final String SCREENSHOT_DIR = "./screenshots";
-
-    WebDriver driver;
 
     public UITester() {
         new SetUpOperator().setUp();
@@ -54,44 +47,27 @@ public class UITester {
     }
 
     public String getParagraphText(String name) {
-        WebElement p = findParagraph(name);
-        return p.getText();
+        return new ParagraphOperator().getParagraphText(name);
     }
 
     public WebElement findParagraph(String name) {
-        String pXpath = String.format("//p[@id='%s']", name);
-        return driver.findElement(By.xpath(pXpath));
+        return new ParagraphOperator().findParagraph(name);
     }
 
     public WebElement findSpan(String name) {
-        String spanXpath = String.format("//span[text()='%s']", name);
-        return driver.findElement(By.xpath(spanXpath));
+        return new SpanOperator().findSpan(name);
     }
 
     public void takeScreenshot() {
-        File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        copyImageToScreenShotsDir(image);
-    }
-
-    private void copyImageToScreenShotsDir(File image) {
-        String currentURL = driver.getCurrentUrl().replace('/', '!') + ".png";
-        try {
-            FileUtils.copyFile(image, new File(SCREENSHOT_DIR, currentURL));
-        }
-        catch(IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void back() {
-        driver.navigate().back();
+        new ScreenShotOperator().takeScreenshot();
     }
 
     public void quit() {
-        driver.quit();
+        new TearDownOperator().tearDown();
     }
 
     public WebDriver getDriver() {
-        return driver;
+        return Operator.getDriver();
     }
+
 }

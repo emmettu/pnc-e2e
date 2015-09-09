@@ -9,7 +9,7 @@ public class SelectTest extends UITest {
         tester.clickLink("Configurations");
         tester.clickLink("Build Configurations");
         tester.clickButton("Create Configuration");
-        tester.clickSelect("createCtrl.data.projectId", "1");
+        tester.clickSelect("createCtrl.data.projectId", 1);
         tester.takeScreenshot();
     }
 }

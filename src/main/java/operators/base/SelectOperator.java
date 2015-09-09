@@ -1,4 +1,4 @@
-package tasks;
+package operators.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
