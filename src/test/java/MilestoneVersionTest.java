@@ -11,9 +11,9 @@ public class MilestoneVersionTest extends VersionTest {
     @Before
     public void createMilestone() {
         tester.clickButton("Create Milestone");
-        tester.insertInput("version", VERSION_NUMBER);
-        tester.insertInput("startingDate", START_DATE);
-        tester.insertInput("plannedReleaseDate", RELEASE_DATE);
+        tester.textInput("version", VERSION_NUMBER);
+        tester.textInput("startingDate", START_DATE);
+        tester.textInput("plannedReleaseDate", RELEASE_DATE);
         tester.submit();
     }
 }

@@ -11,11 +11,11 @@ public class ReleaseTest extends MilestoneVersionTest {
     @Test
     public void createRelease() {
         tester.clickButton("Create Release");
-        tester.insertInput("version", VERSION_NUMBER);
-        tester.insertInput("releaseDate", RELEASE_DATE);
+        tester.textInput("version", VERSION_NUMBER);
+        tester.textInput("releaseDate", RELEASE_DATE);
         tester.clickFirstNonEmptySelect("releaseCreateUpdateCtrl.data.supportLevel");
         //tester.clickFirstNonEmptySelect("releaseCreateUpdateCtrl.productMilestoneId");
-        tester.insertInput("downloadurl", DOWNLOAD_URL);
+        tester.textInput("downloadurl", DOWNLOAD_URL);
         tester.submit();
         tester.findSpan("1.0.1.15");
         tester.takeScreenshot();

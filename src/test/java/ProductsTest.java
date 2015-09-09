@@ -21,11 +21,11 @@ public class ProductsTest extends UITest {
         productName = String.valueOf(randomProductId);
         tester.clickLink("Products");
         tester.clickButton("Create Product");
-        tester.insertInput("name", productName);
+        tester.textInput("name", productName);
         tester.textAreaInput("description", PRODUCT_DESCRIPTION);
-        tester.insertInput("abbreviation", PRODUCT_ABBREVIATION);
-        tester.insertInput("productCode", PRODUCT_CODE);
-        tester.insertInput("pgmSystemName", SYSTEM_NAME);
+        tester.textInput("abbreviation", PRODUCT_ABBREVIATION);
+        tester.textInput("productCode", PRODUCT_CODE);
+        tester.textInput("pgmSystemName", SYSTEM_NAME);
         tester.submit();
     }
 

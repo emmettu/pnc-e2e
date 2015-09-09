@@ -1,6 +1,7 @@
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.openqa.selenium.By;
 import util.UITester;
 
 /**
@@ -22,7 +23,7 @@ public class UITest {
         tester.quit();
     }
     public void assertLinkExists(String linkName) {
-        boolean visibility = tester.findLink(linkName).isDisplayed();
+        boolean visibility = tester.getDriver().findElement(By.linkText(linkName)).isDisplayed();
         Assert.assertEquals(visibility, true);
     }
 }

@@ -1,7 +1,6 @@
 package tasks;
 
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -12,17 +11,14 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by eunderhi on 09/09/15.
  */
-public class SetUpTask extends Task {
+public class SetUpOperator extends Operator {
 
     private Credentials creds = new Credentials();
     private static final int LOAD_WAIT_TIME = 20;
     private String phantomjsPath = creds.getPhantomjsPath();
 
-    public SetUpTask(WebDriver driver) {
-        super(driver);
-    }
-
     public void setUp() {
+
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("takesScreenshot", true);
         caps.setCapability(
@@ -46,13 +42,11 @@ public class SetUpTask extends Task {
             String loginURL = creds.getLoginURL();
             String username = creds.getUsername();
             String password = creds.getPassword();
-            new LoginTask(driver).login(loginURL, username, password);
+            new LoginOperator().login(loginURL, username, password);
         }
         else {
             String baseURL = creds.getBaseURL();
             driver.get(baseURL);
         }
     }
-
-
 }

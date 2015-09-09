@@ -19,10 +19,10 @@ public class ProjectsTest extends UITest{
         projectName = String.valueOf(randomProjectId);
         tester.clickLink("Projects");
         tester.clickButton(Strings.CREATE_PROJECT);
-        tester.insertInput(Strings.NAME, projectName);
+        tester.textInput(Strings.NAME, projectName);
         tester.textAreaInput(Strings.DESCRIPTION, PROJECT_DESCRIPTION);
-        tester.insertInput("projectUrl", PROJECT_URL);
-        tester.insertInput("issueTrackerUrl", ISSUE_TRACKER_URL);
+        tester.textInput("projectUrl", PROJECT_URL);
+        tester.textInput("issueTrackerUrl", ISSUE_TRACKER_URL);
         tester.submit();
         tester.clickLink(Strings.PROJECTS);
     }
