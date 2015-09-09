@@ -12,56 +12,19 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.support.ui.Select;
+import tasks.SetUpTask;
 
 /**
  * Created by eunderhi on 27/07/15.
  */
 public class UITester {
 
-    private Credentials creds = new Credentials();
-    private static final int LOAD_WAIT_TIME = 20;
-    private String phantomjsPath = creds.getPhantomjsPath();
     private static final String SCREENSHOT_DIR = "./screenshots";
 
     WebDriver driver;
 
     public UITester() {
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("takesScreenshot", true);
-        caps.setCapability(
-                PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-                phantomjsPath
-        );
-        String[] phantomArgs = new  String[] {
-                "--webdriver-loglevel=NONE",
-                "--ssl-protocol=any"
-        };
-        caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, phantomArgs);
-        //driver = new PhantomJSDriver(caps);
-        driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(LOAD_WAIT_TIME, TimeUnit.SECONDS);
-        driver.manage().window().setSize(new Dimension(1024, 768));
-        loginOrGoToBaseURL();
-    }
-
-    private void loginOrGoToBaseURL() {
-        if(creds.hasLoginURL()) {
-            String loginURL = creds.getLoginURL();
-            String username = creds.getUsername();
-            String password = creds.getPassword();
-            login(loginURL, username, password);
-        }
-        else {
-            String baseURL = creds.getBaseURL();
-            driver.get(baseURL);
-        }
-    }
-
-    private void login(String loginURL, String username, String password) {
-        driver.get(loginURL);
-        insertInput("username", username);
-        insertInput("password", password);
-        submit();
+        new SetUpTask(driver).setUp();
     }
 
     public void clickLink(String linkText) {
@@ -77,12 +40,6 @@ public class UITester {
         String buttonXpath = String.format("//button[@title='%s']", buttonName);
         WebElement element = driver.findElement(By.xpath(buttonXpath));
         element.click();
-    }
-
-    public void insertInput(String elementName, String inputString){
-        String inputXpath = String.format("//input[@name='%s']", elementName);
-        WebElement element = driver.findElement(By.xpath(inputXpath));
-        element.sendKeys(inputString);
     }
 
     public void textAreaInput(String elementName, String inputString){
