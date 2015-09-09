@@ -1,5 +1,6 @@
 import org.junit.*;
 import org.junit.Test;
+import util.RandomName;
 import util.Strings;
 
 import java.util.Random;
@@ -15,8 +16,7 @@ public class ProjectsTest extends UITest{
 
     @Before
     public void createProject() {
-        int randomProjectId = new Random().nextInt(1000000);
-        projectName = String.valueOf(randomProjectId);
+        projectName = RandomName.getRandomName();
         tester.clickLink("Projects");
         tester.clickButton(Strings.CREATE_PROJECT);
         tester.textInput(Strings.NAME, projectName);

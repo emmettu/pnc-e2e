@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import util.RandomName;
 
 import java.io.IOException;
 import java.util.Random;
@@ -17,8 +18,7 @@ public class ProductsTest extends UITest {
 
     @Before
     public void createProduct() {
-        int randomProductId = new Random().nextInt(1000000);
-        productName = String.valueOf(randomProductId);
+        productName = RandomName.getRandomName();
         tester.clickLink("Products");
         tester.clickButton("Create Product");
         tester.textInput("name", productName);

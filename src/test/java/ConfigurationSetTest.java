@@ -1,4 +1,5 @@
 import org.junit.Before;
+import util.RandomName;
 
 import java.io.IOException;
 import java.util.Random;
@@ -13,8 +14,7 @@ public class ConfigurationSetTest extends UITest {
 
     @Before
     public void CreateConfigurationSet() throws IOException {
-        int randomConfigurationId = new Random().nextInt(1000000);
-        configurationSetName = String.valueOf(randomConfigurationId);
+        configurationSetName = RandomName.getRandomName();
 
         tester.clickLink("Configurations");
         tester.clickLink("Build Configuration Sets");

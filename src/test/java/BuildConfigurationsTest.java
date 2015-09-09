@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import util.RandomName;
 
 import java.io.IOException;
 import java.util.Random;
@@ -23,11 +24,11 @@ public class BuildConfigurationsTest extends UITest {
         tester.clickLink("Configurations");
         tester.clickLink("Build Configurations");
     }
+
     @Before
     public void createBuildConfiguration() throws IOException{
-        int randomConfigurationId = new Random().nextInt(1000000);
-        configurationName = String.valueOf(randomConfigurationId);
 
+        configurationName = RandomName.getRandomName();
         tester.clickLink("Configurations");
         tester.clickLink("Build Configurations");
         tester.clickButton("Create Configuration");
