@@ -1,5 +1,7 @@
 package ui;
 
+import operators.base.LinkOperator;
+import operators.projects.ProjectPageOperator;
 import org.junit.*;
 import org.junit.Test;
 import util.Elements;
@@ -12,39 +14,29 @@ import util.Strings;
 public class ProjectsTest extends UITest{
 
     private static  String projectName;
-    private static final String PROJECT_DESCRIPTION = "test description";
-    private static final String PROJECT_URL = "http://test";
-    private static final String ISSUE_TRACKER_URL = "http://test";
 
     @Before
     public void createProject() {
         projectName = RandomName.getRandomName();
-        tester.clickLink("Projects");
-        tester.clickButton(Elements.CREATE_PROJECT);
-        tester.textInput(Elements.PROJECT_NAME, projectName);
-        tester.textAreaInput(Elements.PROJECT_DESCRIPTION, PROJECT_DESCRIPTION);
-        tester.textInput("projectUrl", PROJECT_URL);
-        tester.textInput("issueTrackerUrl", ISSUE_TRACKER_URL);
-        tester.submit();
+        new ProjectPageOperator(projectName).newProject();
     }
 
     @Test
     public void projectInfoCorrect() {
+        String actualName = tester.getParagraphText(Elements.NAME_PARAGRAPH);
+        String projectDescription = tester.getParagraphText(Elements.PROJECT_DESCRIPTION_PARAGRAPH);
+        String projectUrl = tester.getParagraphText(Elements.PROJECT_URL_PARAGRAPH);
+        String projectIssueUrl = tester.getParagraphText(Elements.PROJECT_ISSUE_URL_PARAGRAPH);
 
-        String productName = tester.getParagraphText("input-name");
-        String productDescription = tester.getParagraphText("static-description");
-        String productAbbreviation = tester.getParagraphText("input-url");
-        String productCode = tester.getParagraphText("input-issue-tracker");
-
-        Assert.assertEquals(productName, projectName);
-        Assert.assertEquals(productDescription, PROJECT_DESCRIPTION);
-        Assert.assertEquals(productAbbreviation, PROJECT_URL);
-        Assert.assertEquals(productCode, ISSUE_TRACKER_URL);
+        Assert.assertEquals(projectName, actualName);
+        Assert.assertEquals(Strings.PRODUCT_DESCRIPTION, projectDescription);
+        Assert.assertEquals(Strings.PROJECT_URL, projectUrl);
+        Assert.assertEquals(Strings.PROJECT_ISSUE_URL, projectIssueUrl);
     }
 
     @Test
-    public void projectCreated() {
-        tester.clickLink("Projects");
+    public void projectExists() {
+        tester.clickLink(Elements.PROJECT_LINK);
         assertLinkExists(projectName);
     }
 
