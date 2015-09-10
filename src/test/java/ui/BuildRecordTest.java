@@ -1,3 +1,5 @@
+package ui;
+
 import org.junit.Test;
 
 import java.io.IOException;
@@ -13,7 +15,7 @@ public class BuildRecordTest extends ConfigurationSetTest {
         tester.clickButton("Start Build");
         tester.clickLink("Builds");
         tester.clickLink("Build Configuration Set Records");
-        asserBuildRecordExists(configurationSetName);
+        assertBuildRecordExists(configurationSetName);
     }
 
 }

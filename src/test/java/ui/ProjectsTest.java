@@ -1,9 +1,10 @@
+package ui;
+
 import org.junit.*;
 import org.junit.Test;
+import util.Elements;
 import util.RandomName;
 import util.Strings;
-
-import java.util.Random;
 
 /**
  * Created by eunderhi on 29/07/15.
@@ -19,9 +20,9 @@ public class ProjectsTest extends UITest{
     public void createProject() {
         projectName = RandomName.getRandomName();
         tester.clickLink("Projects");
-        tester.clickButton(Strings.CREATE_PROJECT);
-        tester.textInput(Strings.NAME, projectName);
-        tester.textAreaInput(Strings.DESCRIPTION, PROJECT_DESCRIPTION);
+        tester.clickButton(Elements.CREATE_PROJECT);
+        tester.textInput(Elements.PROJECT_NAME, projectName);
+        tester.textAreaInput(Elements.PROJECT_DESCRIPTION, PROJECT_DESCRIPTION);
         tester.textInput("projectUrl", PROJECT_URL);
         tester.textInput("issueTrackerUrl", ISSUE_TRACKER_URL);
         tester.submit();

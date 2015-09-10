@@ -1,10 +1,11 @@
+package ui;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import util.RandomName;
 
 import java.io.IOException;
-import java.util.Random;
 
 
 /**

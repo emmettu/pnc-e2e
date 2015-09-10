@@ -1,3 +1,5 @@
+package ui;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -29,7 +31,7 @@ public class UITest {
     }
 
 
-    public void asserBuildRecordExists(String recordName) {
+    public void assertBuildRecordExists(String recordName) {
         boolean visibility = tester.getDriver().findElement(By.partialLinkText(recordName)).isDisplayed();
         Assert.assertEquals(visibility, true);
     }

@@ -1,8 +1,9 @@
+package ui;
+
 import org.junit.Before;
 import util.RandomName;
 
 import java.io.IOException;
-import java.util.Random;
 
 /**
  * Created by eunderhi on 28/07/15.
