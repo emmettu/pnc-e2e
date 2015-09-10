@@ -1,8 +1,10 @@
 package ui;
 
 import operators.products.ProductPageOperator;
+import operators.products.VersionPageOperator;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import util.Elements;
 import util.RandomName;
@@ -37,6 +39,12 @@ public class ProductsTest extends UITest {
         Assert.assertEquals(productAbbreviation, Strings.PRODUCT_ABBREVIATION);
         Assert.assertEquals(productCode, Strings.PRODUCT_CODE);
         Assert.assertEquals(systemName, Strings.PRODUCT_SYSTEM_NAME);
+    }
+
+    @Test
+    public void createProductVersion() {
+        new VersionPageOperator(productName).newVersion();
+        assertLinkExists(Strings.PRODUCT_VERSION);
     }
 
 }
