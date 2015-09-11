@@ -15,19 +15,19 @@ public class UITester {
     }
 
     public void clickLink(String linkText) {
-        new LinkOperator().clickLink(linkText);
+        new LinkOperator(linkText).clickLink();
     }
 
     public void clickButton(String buttonName) {
-        new ButtonOperator().clickButton(buttonName);
+        new ButtonOperator(buttonName).clickButton();
     }
 
     public void textInput(String name, String input) {
-        new TextInputOperator().insertInput(name, input);
+        new TextInputOperator(name).insertInput(input);
     }
 
     public void textAreaInput(String elementName, String inputString) {
-        new AreaTextOperator().textAreaInput(elementName, inputString);
+        new AreaTextOperator(elementName).textAreaInput(inputString);
     }
 
     public void submit(){
@@ -47,23 +47,23 @@ public class UITester {
     }
 
     public String getParagraphText(String name) {
-        return new ParagraphOperator().getParagraphText(name);
+        return new ParagraphOperator(name).getParagraphText();
     }
 
     public WebElement findParagraph(String name) {
-        return new ParagraphOperator().findParagraph(name);
+        return new ParagraphOperator(name).findParagraph();
     }
 
     public WebElement findSpan(String name) {
-        return new SpanOperator().findSpan(name);
+        return new SpanOperator(name).findSpan();
     }
 
     public void takeFailScreenShot(String name) {
-        new ScreenShotOperator().takeFailScreenShot(name);
+        new ScreenShotOperator(name).takeFailScreenShot();
     }
 
     public void takeSucceedScreenShot(String name) {
-        new ScreenShotOperator().takeSucceedScreenShot(name);
+        new ScreenShotOperator(name).takeSucceedScreenShot();
     }
 
     public void quit() {

@@ -8,12 +8,16 @@ import org.openqa.selenium.WebElement;
  */
 public class LinkOperator extends Operator {
 
-    public void clickLink(String linkText) {
-        WebElement element = findLink(linkText);
+    public LinkOperator(String name) {
+        super(name);
+    }
+
+    public void clickLink() {
+        WebElement element = findLink();
         element.click();
     }
 
-    public WebElement findLink(String name) {
+    public WebElement findLink() {
         return driver.findElement(By.linkText(name));
     }
 }

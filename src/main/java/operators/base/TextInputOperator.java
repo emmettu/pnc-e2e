@@ -8,8 +8,12 @@ import org.openqa.selenium.WebElement;
  */
 public class TextInputOperator extends Operator {
 
-    public void insertInput(String elementName, String inputString){
-        String inputXpath = String.format("//input[@name='%s']", elementName);
+    public TextInputOperator(String name) {
+        super(name);
+    }
+
+    public void insertInput(String inputString){
+        String inputXpath = String.format("//input[@name='%s']", name);
         WebElement element = driver.findElement(By.xpath(inputXpath));
         element.sendKeys(inputString);
     }

@@ -8,8 +8,12 @@ import org.openqa.selenium.WebElement;
  */
 public class ButtonOperator extends Operator {
 
-    public void clickButton(String buttonName) {
-        String buttonXpath = String.format("//button[@title='%s']", buttonName);
+    public ButtonOperator(String name) {
+        super(name);
+    }
+
+    public void clickButton() {
+        String buttonXpath = String.format("//button[@title='%s']", name);
         WebElement element = driver.findElement(By.xpath(buttonXpath));
         element.click();
     }

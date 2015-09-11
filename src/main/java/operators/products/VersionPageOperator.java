@@ -16,10 +16,10 @@ public class VersionPageOperator extends Operator {
     }
 
     public void newVersion() {
-        new LinkOperator().clickLink(Elements.PRODUCT_LINK);
-        new LinkOperator().clickLink(productName);
-        new ButtonOperator().clickButton(Elements.CREATE_VERSION_BUTTON);
-        new TextInputOperator().insertInput(Elements.VERSION_INPUT, Strings.PRODUCT_VERSION);
+        new LinkOperator(Elements.PRODUCT_LINK).clickLink();
+        new LinkOperator(productName).clickLink();
+        new ButtonOperator(Elements.CREATE_VERSION_BUTTON).clickButton();
+        new TextInputOperator(Elements.VERSION_INPUT).insertInput(Strings.PRODUCT_VERSION);
         new SubmitOperator().submit();
     }
 

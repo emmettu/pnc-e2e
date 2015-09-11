@@ -8,8 +8,12 @@ import org.openqa.selenium.WebElement;
  */
 public class AreaTextOperator extends Operator {
 
-    public void textAreaInput(String elementName, String inputString) {
-        String inputXpath = String.format("//textarea[@name='%s']", elementName);
+    public AreaTextOperator(String name) {
+        super(name);
+    }
+
+    public void textAreaInput(String inputString) {
+        String inputXpath = String.format("//textarea[@name='%s']", name);
         WebElement element = driver.findElement(By.xpath(inputXpath));
         element.sendKeys(inputString);
     }

@@ -8,12 +8,16 @@ import org.openqa.selenium.WebElement;
  */
 public class ParagraphOperator extends Operator {
 
-    public String getParagraphText(String name) {
-        WebElement p = findParagraph(name);
+    public ParagraphOperator(String name) {
+        super(name);
+    }
+
+    public String getParagraphText() {
+        WebElement p = findParagraph();
         return p.getText();
     }
 
-    public WebElement findParagraph(String name) {
+    public WebElement findParagraph() {
         String pXpath = String.format("//p[@id='%s']", name);
         return driver.findElement(By.xpath(pXpath));
     }

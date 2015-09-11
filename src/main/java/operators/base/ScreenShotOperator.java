@@ -16,20 +16,24 @@ public class ScreenShotOperator extends Operator {
     String FAIL_DIR = SCREENSHOT_DIR + "/fail";
     String SUCCEED_DIR = SCREENSHOT_DIR + "/succeed";
 
-    public void takeFailScreenShot(String name) {
-        takeScreenshot(FAIL_DIR, name);
+    public ScreenShotOperator(String name) {
+        super(name);
     }
 
-    public void takeSucceedScreenShot(String name) {
-        takeScreenshot(SUCCEED_DIR, name);
+    public void takeFailScreenShot() {
+        takeScreenshot(FAIL_DIR);
     }
 
-    public void takeScreenshot(String directory, String name) {
+    public void takeSucceedScreenShot() {
+        takeScreenshot(SUCCEED_DIR);
+    }
+
+    public void takeScreenshot(String directory) {
         File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        copyImageToScreenShotsDir(image, directory, name);
+        copyImageToScreenShotsDir(image, directory);
     }
 
-    private void copyImageToScreenShotsDir(File image, String directory, String name) {
+    private void copyImageToScreenShotsDir(File image, String directory) {
         name += ".png";
         try {
             FileUtils.copyFile(image, new File(directory, name));

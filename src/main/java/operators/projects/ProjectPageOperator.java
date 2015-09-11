@@ -9,19 +9,17 @@ import util.Strings;
  */
 public class ProjectPageOperator extends Operator {
 
-    String projectName;
-
-    public ProjectPageOperator(String projectName) {
-        this.projectName = projectName;
+    public ProjectPageOperator(String name) {
+        super(name);
     }
 
     public void newProject() {
-        new LinkOperator().clickLink(Elements.PROJECT_LINK);
-        new ButtonOperator().clickButton(Elements.CREATE_PROJECT_BUTTON);
-        new TextInputOperator().insertInput(Elements.PROJECT_NAME, projectName);
-        new AreaTextOperator().textAreaInput(Elements.PROJECT_DESCRIPTION, Strings.PROJECT_DESCRIPTION);
-        new TextInputOperator().insertInput(Elements.PROJECT_URL, Strings.PROJECT_URL);
-        new TextInputOperator().insertInput(Elements.PROJECT_ISSUE_URL, Strings.PROJECT_ISSUE_URL);
+        new LinkOperator(Elements.PROJECT_LINK).clickLink();
+        new ButtonOperator(Elements.CREATE_PROJECT_BUTTON).clickButton();
+        new TextInputOperator(Elements.PROJECT_NAME).insertInput(name);
+        new AreaTextOperator(Elements.PROJECT_DESCRIPTION).textAreaInput(Strings.PROJECT_DESCRIPTION);
+        new TextInputOperator(Elements.PROJECT_URL).insertInput(Strings.PROJECT_URL);
+        new TextInputOperator(Elements.PROJECT_ISSUE_URL).insertInput(Strings.PROJECT_ISSUE_URL);
         new SubmitOperator().submit();
     }
 }

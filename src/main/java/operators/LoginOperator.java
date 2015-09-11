@@ -11,8 +11,8 @@ public class LoginOperator extends Operator {
 
     public void login(String loginURL, String username, String password) {
         driver.get(loginURL);
-        new TextInputOperator().insertInput("username", username);
-        new TextInputOperator().insertInput("password", password);
+        new TextInputOperator("username").insertInput(username);
+        new TextInputOperator("password").insertInput(password);
         new SubmitOperator().submit();
     }
 }
