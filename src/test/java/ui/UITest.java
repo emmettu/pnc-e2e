@@ -1,8 +1,6 @@
 package ui;
 
 import org.junit.*;
-import org.junit.rules.TestWatcher;
-import org.junit.runner.Description;
 import org.openqa.selenium.By;
 import util.UITester;
 
@@ -31,7 +29,7 @@ public class UITest {
     }
 
     public void assertLinkExists(String linkName) {
-        boolean visibility = tester.getDriver().findElement(By.linkText(linkName)).isDisplayed();
+        boolean visibility = tester.getDriver().findElement(By.linkText(linkName)).isEnabled();
         Assert.assertEquals(visibility, true);
     }
 

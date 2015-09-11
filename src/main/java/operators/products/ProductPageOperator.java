@@ -20,9 +20,9 @@ public class ProductPageOperator extends Operator {
         new ButtonOperator().clickButton(Elements.CREATE_PRODUCT_BUTTON);
         new TextInputOperator().insertInput(Elements.PRODUCT_NAME, productName);
         new AreaTextOperator().textAreaInput(Elements.PRODUCT_DESCRIPTION, Strings.PRODUCT_DESCRIPTION);
-        new TextInputOperator().insertInput(Elements.PRODUCT_ABBREVIATION, Strings.PRODUCT_ABBREVIATION);
-        new TextInputOperator().insertInput(Elements.PRODUCT_CODE, Strings.PRODUCT_CODE);
-        new TextInputOperator().insertInput(Elements.PRODUCT_SYSTEM_CODE, Strings.PRODUCT_SYSTEM_NAME);
+        new TextInputOperator().insertInput(Elements.PRODUCT_ABBREVIATION, productName);
+        new TextInputOperator().insertInput(Elements.PRODUCT_CODE, productName);
+        new TextInputOperator().insertInput(Elements.PRODUCT_SYSTEM_CODE, productName);
         new SubmitOperator().submit();
     }
 

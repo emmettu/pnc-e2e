@@ -36,9 +36,9 @@ public class ProductsTest extends UITest {
 
         Assert.assertEquals(productName, actualName);
         Assert.assertEquals(productDescription, Strings.PRODUCT_DESCRIPTION);
-        Assert.assertEquals(productAbbreviation, Strings.PRODUCT_ABBREVIATION);
-        Assert.assertEquals(productCode, Strings.PRODUCT_CODE);
-        Assert.assertEquals(systemName, Strings.PRODUCT_SYSTEM_NAME);
+        Assert.assertEquals(productAbbreviation, productName);
+        Assert.assertEquals(productCode, productName);
+        Assert.assertEquals(systemName, productName);
     }
 
     @Test
