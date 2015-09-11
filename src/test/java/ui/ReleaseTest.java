@@ -20,6 +20,5 @@ public class ReleaseTest extends MilestoneVersionTest {
         tester.textInput("downloadurl", DOWNLOAD_URL);
         tester.submit();
         tester.findSpan("1.0.1.15");
-        tester.takeScreenshot();
     }
 }

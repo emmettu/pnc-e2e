@@ -58,8 +58,12 @@ public class UITester {
         return new SpanOperator().findSpan(name);
     }
 
-    public void takeScreenshot() {
-        new ScreenShotOperator().takeScreenshot();
+    public void takeFailScreenShot(String name) {
+        new ScreenShotOperator().takeFailScreenShot(name);
+    }
+
+    public void takeSucceedScreenShot(String name) {
+        new ScreenShotOperator().takeSucceedScreenShot(name);
     }
 
     public void quit() {

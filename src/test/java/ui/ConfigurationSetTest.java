@@ -23,7 +23,6 @@ public class ConfigurationSetTest extends UITest {
         tester.textInput("name", configurationSetName);
         tester.submit();
         assertLinkExists(configurationSetName);
-        tester.takeScreenshot();
     }
 
 }

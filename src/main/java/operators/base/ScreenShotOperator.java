@@ -13,16 +13,26 @@ import java.io.IOException;
 public class ScreenShotOperator extends Operator {
 
     String SCREENSHOT_DIR = "./screenshots";
+    String FAIL_DIR = SCREENSHOT_DIR + "/fail";
+    String SUCCEED_DIR = SCREENSHOT_DIR + "/succeed";
 
-    public void takeScreenshot() {
-        File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        copyImageToScreenShotsDir(image);
+    public void takeFailScreenShot(String name) {
+        takeScreenshot(FAIL_DIR, name);
     }
 
-    private void copyImageToScreenShotsDir(File image) {
-        String currentURL = driver.getCurrentUrl().replace('/', '!') + ".png";
+    public void takeSucceedScreenShot(String name) {
+        takeScreenshot(SUCCEED_DIR, name);
+    }
+
+    public void takeScreenshot(String directory, String name) {
+        File image = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        copyImageToScreenShotsDir(image, directory, name);
+    }
+
+    private void copyImageToScreenShotsDir(File image, String directory, String name) {
+        name += ".png";
         try {
-            FileUtils.copyFile(image, new File(SCREENSHOT_DIR, currentURL));
+            FileUtils.copyFile(image, new File(directory, name));
         }
         catch(IOException e) {
             e.printStackTrace();

@@ -1,8 +1,8 @@
 package ui;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
+import org.junit.*;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 import org.openqa.selenium.By;
 import util.UITester;
 
@@ -14,15 +14,20 @@ import util.UITester;
  */
 
 public class UITest {
-    UITester tester;
+
+    public UITester tester;
+
+    @Rule
+    public ScreenShotTestWatcher testWatcher = new ScreenShotTestWatcher(getClass().getName());
 
     @Before
     public void setUp() {
         tester = new UITester();
+        testWatcher.setTester(tester);
     }
+
     @After
     public void tearDown() {
-        tester.quit();
     }
 
     public void assertLinkExists(String linkName) {
@@ -37,3 +42,4 @@ public class UITest {
     }
 
 }
+
