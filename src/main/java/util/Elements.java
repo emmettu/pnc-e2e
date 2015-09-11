@@ -38,4 +38,22 @@ public class Elements {
     public static final String PROJECT_URL_PARAGRAPH = "input-url";
     public static final String PROJECT_ISSUE_URL_PARAGRAPH = "input-issue-tracker";
 
+    public static final String CONFIGURATION_LINK = "Configurations";
+    public static final String BUILD_CONFIGURATION_LINK = "Build Configurations";
+    public static final String CREATE_CONFIGURATION_BUTTON = "Create Configuration";
+    public static final String BUILD_CONFIGURATION_INPUT = "name";
+    public static final String BUILD_CONFIGURATION_PROJECT_SELECT = "createCtrl.data.projectId";
+    public static final String BUILD_CONFIGURATION_DESCRIPTION = "description";
+    public static final String BUILD_CONFIGURATION_SCM_URL = "scmRepoURL";
+    public static final String BUILD_CONFIGURATION_SCM_REVISION = "scmRevision";
+    public static final String BUILD_CONFIGURATION_BUILD_SCRIPT = "buildScript";
+    public static final String BUILD_CONFIGURATION_PRODUCT = "createCtrl.products.selected";
+    public static final String BUILD_CONFIGURATION_ENVIRONMENT ="createCtrl.data.environmentId";
+
+
+    public static final String BUILD_CONFIGURATION_NAME_P = "input-name";
+    public static final String BUILD_CONFIGURATION_DESCRIPTION_P = "input-description";
+    public static final String BUILD_CONFIGURATION_SCM_URL_P = "input-scm-repo-url";
+    public static final String BUILD_CONFIGURATION_SCM_REVISION_P = "input-scm-revision";
+
 }

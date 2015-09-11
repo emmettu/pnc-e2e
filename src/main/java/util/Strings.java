@@ -15,4 +15,9 @@ public class Strings {
     public static final String PROJECT_URL = "http://test";
     public static final String PROJECT_ISSUE_URL = "http://test";
 
+    public static final String BUILD_CONFIGURATION_DESCRIPTION = "test description";
+    public static final String BUILD_CONFIGURATION_SCM_URL = "http://test";
+    public static final String BUILD_CONFIGURATION_SCM_REVISION = "scm test";
+    public static final String BUILD_CONFIGURATION_BUILD_SCRIPT = "mvn clean install";
+
 }

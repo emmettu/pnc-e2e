@@ -1,75 +1,47 @@
 package ui;
 
+import operators.configurations.BuildConfigurationPageOperator;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+import util.Elements;
 import util.RandomName;
-
-import java.io.IOException;
+import util.Strings;
 
 
 /**
  * Created by mvaghela on 29/07/15.
  */
 public class BuildConfigurationsTest extends UITest {
+
     private static String configurationName;
-    private static final String CONFIGURATION_DESCRIPTION = "test description";
-    private static final String SCM_URL = "test abbreviation";
-    private static final String SCM_REVISION = "test code";
-    private static final String BUILD_SCRIPT = "test system name";
-    private static final String DEPENDENCIES = "";
-    private static final String PRODUCT_VERSIONS = "";
-
-    @Before
-    public void navigateToPage() {
-        tester.clickLink("Configurations");
-        tester.clickLink("Build Configurations");
-    }
-
-    @Before
-    public void createBuildConfiguration() throws IOException{
-
-        configurationName = RandomName.getRandomName();
-        tester.clickLink("Configurations");
-        tester.clickLink("Build Configurations");
-        tester.clickButton("Create Configuration");
-        tester.textInput("name", configurationName);
-        tester.clickSelect("createCtrl.data.projectId", 2);
-        tester.textAreaInput("description", CONFIGURATION_DESCRIPTION);
-        tester.textInput("scmRepoURL", SCM_URL);
-        tester.textInput("scmRevision", SCM_REVISION);
-        tester.textAreaInput("buildScript", BUILD_SCRIPT);
-        tester.clickSelect("createCtrl.products.selected", 1);
-        tester.clickSelect("createCtrl.data.environmentId", 1);
-        tester.submit();
-        tester.clickLink("Configurations");
-        tester.clickLink("Build Configurations");
-    }
-
-    @Test
-    public void buildConfigurationCreated(){
-        assertLinkExists(configurationName);
-    }
 
     @Test
     public void buildConfigurationInfoCorrect(){
-        tester.clickLink(configurationName);
+        createNewConfiguration();
 
-        String configurationName = tester.getParagraphText("input-name");
-        String configurationProject = tester.getParagraphText("static-project");
-        String configuraitonDescription = tester.getParagraphText("input-description");
-        String SCMUrl = tester.getParagraphText("input-scm-repo-url");
-        String SCMRevision = tester.getParagraphText("input-scm-revision");
-      //  String buildScript = tester.getParagraphText(""); can't do this, not a paragraph
-      //  String dependences = tester.something("");   this is a div
-      //  String productVersions = tester.something(""); this is a div
+        String configurationName = tester.getParagraphText(Elements.BUILD_CONFIGURATION_NAME_P);
+        String configurationDescription = tester.getParagraphText(Elements.BUILD_CONFIGURATION_DESCRIPTION_P);
+        String SCMUrl = tester.getParagraphText(Elements.BUILD_CONFIGURATION_SCM_URL_P);
+        String SCMRevision = tester.getParagraphText(Elements.BUILD_CONFIGURATION_SCM_REVISION_P);
 
         Assert.assertEquals(configurationName, configurationName);
-        Assert.assertEquals(configuraitonDescription, CONFIGURATION_DESCRIPTION);
-        Assert.assertEquals(SCMUrl, SCM_URL);
-        Assert.assertEquals(SCMRevision, SCM_REVISION);
-     //   Assert.assertEquals(buildScript, BUILD_SCRIPT);
-     //   Assert.assertEquals(dependencies, DEPENDENCIES);
-     //   Assert.assertEquals(productVerions, PRODUCT_VERSIONS);
+        Assert.assertEquals(configurationDescription, Strings.BUILD_CONFIGURATION_DESCRIPTION);
+        Assert.assertEquals(SCMUrl, Strings.BUILD_CONFIGURATION_SCM_URL);
+        Assert.assertEquals(SCMRevision, Strings.BUILD_CONFIGURATION_SCM_REVISION);
+    }
+
+
+    @Test
+    public void configurationExists() {
+        createNewConfiguration();
+
+        tester.clickLink(Elements.CONFIGURATION_LINK);
+        tester.clickLink(Elements.BUILD_CONFIGURATION_LINK);
+        assertLinkExists(configurationName);
+    }
+
+    private void createNewConfiguration() {
+        configurationName = RandomName.getRandomName();
+        new BuildConfigurationPageOperator(configurationName).createBuildConfiguration();
     }
 }
