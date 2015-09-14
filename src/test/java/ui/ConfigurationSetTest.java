@@ -1,6 +1,8 @@
 package ui;
 
+import operators.configurations.BuildConfigurationSetPageOperator;
 import org.junit.Before;
+import org.junit.Test;
 import util.RandomName;
 
 import java.io.IOException;
@@ -11,17 +13,13 @@ import java.io.IOException;
 public class ConfigurationSetTest extends UITest {
 
     protected static  String configurationSetName;
-    protected static final String CONFIGURATION_SET_LINK = "#/configuration/1";
 
-    @Before
+    @Test
     public void CreateConfigurationSet() throws IOException {
         configurationSetName = RandomName.getRandomName();
 
-        tester.clickLink("Configurations");
-        tester.clickLink("Build Configuration Sets");
-        tester.clickButton("Create Build Configuration Set");
-        tester.textInput("name", configurationSetName);
-        tester.submit();
+        new BuildConfigurationSetPageOperator(configurationSetName).createBuildConfigurationSet();
+
         assertLinkExists(configurationSetName);
     }
 

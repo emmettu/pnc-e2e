@@ -50,10 +50,12 @@ public class Elements {
     public static final String BUILD_CONFIGURATION_PRODUCT = "createCtrl.products.selected";
     public static final String BUILD_CONFIGURATION_ENVIRONMENT ="createCtrl.data.environmentId";
 
-
     public static final String BUILD_CONFIGURATION_NAME_P = "input-name";
     public static final String BUILD_CONFIGURATION_DESCRIPTION_P = "input-description";
     public static final String BUILD_CONFIGURATION_SCM_URL_P = "input-scm-repo-url";
     public static final String BUILD_CONFIGURATION_SCM_REVISION_P = "input-scm-revision";
 
+    public static final String BUILD_CONFIGURATION_SET_LINK = "Build Configuration Sets";
+    public static final String CREATE_CONFIGURATION_SET_BUTTON = "Create Build Configuration Set";
+    public static final String BUILD_CONFIGURATION_SET_INPUT = "name";
 }
