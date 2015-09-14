@@ -58,4 +58,10 @@ public class Elements {
     public static final String BUILD_CONFIGURATION_SET_LINK = "Build Configuration Sets";
     public static final String CREATE_CONFIGURATION_SET_BUTTON = "Create Build Configuration Set";
     public static final String BUILD_CONFIGURATION_SET_INPUT = "name";
+
+    public static final String CREATE_MILESTONE_BUTTON = "Create Milestone";
+    public static final String MILESTONE_VERSION_INPUT = "version";
+    public static final String MILESTONE_START_DATE = "startingDate";
+    public static final String MILESTONE_RELEASE_DATE = "plannedReleaseDate";
+
 }

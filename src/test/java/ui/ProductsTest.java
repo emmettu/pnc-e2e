@@ -1,9 +1,11 @@
 package ui;
 
+import operators.products.MilestonePageOperator;
 import operators.products.ProductPageOperator;
 import operators.products.VersionPageOperator;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import util.Elements;
 import util.RandomName;
@@ -44,6 +46,14 @@ public class ProductsTest extends UITest {
     public void createProductVersion() {
         new VersionPageOperator(productName).newVersion();
         assertLinkExists(Strings.PRODUCT_VERSION);
+    }
+
+    @Test
+    public void addProductMilestone() {
+        new VersionPageOperator(productName).newVersion();
+        new MilestonePageOperator(productName).createMilestone();
+        String fullVersion = Strings.PRODUCT_VERSION + "." + Strings.MILESTONE_VERSION_INPUT;
+        tester.findSpan(fullVersion);
     }
 
 }

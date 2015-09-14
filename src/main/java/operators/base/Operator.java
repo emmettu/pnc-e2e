@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public abstract class Operator {
 
     protected static WebDriver driver;
-    protected String name;
+    public String name;
 
     public Operator(String name) {
         this.name = name;
