@@ -2,6 +2,7 @@ package ui;
 
 import operators.products.MilestonePageOperator;
 import operators.products.ProductPageOperator;
+import operators.products.ReleasePageOperator;
 import operators.products.VersionPageOperator;
 import org.junit.Assert;
 import org.junit.Before;
@@ -53,6 +54,16 @@ public class ProductsTest extends UITest {
         new VersionPageOperator(productName).newVersion();
         new MilestonePageOperator(productName).createMilestone();
         String fullVersion = Strings.PRODUCT_VERSION + "." + Strings.MILESTONE_VERSION_INPUT;
+        tester.findSpan(fullVersion);
+    }
+
+
+    @Test
+    public void addProductRelease() throws InterruptedException {
+        new VersionPageOperator(productName).newVersion();
+        new MilestonePageOperator(productName).createMilestone();
+        new ReleasePageOperator(productName).createRelease();
+        String fullVersion = Strings.PRODUCT_VERSION + "." + Strings.RELEASE_VERSION_INPUT;
         tester.findSpan(fullVersion);
     }
 

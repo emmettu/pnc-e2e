@@ -10,8 +10,12 @@ import org.openqa.selenium.support.ui.Select;
  */
 public class SelectOperator extends Operator {
 
-    public void clickSelect(String ngModel, int value) {
-        String selectXpath = String.format("//select[@ng-model='%s']", ngModel);
+    public SelectOperator(String ngModel) {
+        super(ngModel);
+    }
+
+    public void clickSelect(int value) {
+        String selectXpath = String.format("//select[@ng-model='%s']", name);
         WebElement element = driver.findElement(By.xpath(selectXpath));
         element.click();
         for (int i = 0; i < value; i++) {
@@ -20,8 +24,8 @@ public class SelectOperator extends Operator {
         element.sendKeys(Keys.ENTER);
     }
 
-    public void clickFirstNonEmptySelect(String ngModel) {
-        String selectXpath = String.format("//select[@ng-model='%s']", ngModel);
+    public void clickFirstNonEmptySelect() {
+        String selectXpath = String.format("//select[@ng-model='%s']", name);
         WebElement element = driver.findElement(By.xpath(selectXpath));
         element.click();
         Select select = new Select(element);

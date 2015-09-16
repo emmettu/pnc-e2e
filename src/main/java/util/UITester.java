@@ -35,11 +35,11 @@ public class UITester {
     }
 
     public void clickSelect(String ngModel, int value) {
-        new SelectOperator().clickSelect(ngModel, value);
+        new SelectOperator(ngModel).clickSelect(value);
     }
 
     public void clickFirstNonEmptySelect(String ngModel) {
-        new SelectOperator().clickFirstNonEmptySelect(ngModel);
+        new SelectOperator(ngModel).clickFirstNonEmptySelect();
     }
 
     public void clickCheckBox() {

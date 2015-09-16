@@ -19,8 +19,13 @@ public class Strings {
     public static final String BUILD_CONFIGURATION_SCM_URL = "http://test";
     public static final String BUILD_CONFIGURATION_SCM_REVISION = "scm test";
     public static final String BUILD_CONFIGURATION_BUILD_SCRIPT = "mvn clean install";
+
     public static final String MILESTONE_VERSION_INPUT = "15.15";
     public static final String MILESTONE_START_DATE = "1997/07/04";
     public static final String MILESTONE_RELEASE_DATE = "1999/06/06";
+
+    public static final String RELEASE_VERSION_INPUT = "19.19";
+    public static final String RELEASE_DATE = "1994/10/05";
+    public static final String RELEASE_URL = "http://test";
 
 }
