@@ -15,12 +15,18 @@ public class ConfigurationSetTest extends UITest {
     protected static String configurationSetName;
 
     @Test
-    public void CreateConfigurationSet() throws IOException {
+    public void createConfigurationSet() {
         configurationSetName = RandomName.getRandomName();
-
         new BuildConfigurationSetPageOperator(configurationSetName).createBuildConfigurationSet();
-
         assertLinkExists(configurationSetName);
+    }
+
+    @Test
+    public void addBuildConfiguration() {
+        configurationSetName = RandomName.getRandomName();
+        BuildConfigurationSetPageOperator operator = new BuildConfigurationSetPageOperator(configurationSetName);
+        operator.createBuildConfigurationSet();
+        operator.addBuildConfiguration();
     }
 
 }
