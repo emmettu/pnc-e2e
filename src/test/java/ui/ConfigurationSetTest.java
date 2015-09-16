@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class ConfigurationSetTest extends UITest {
 
-    protected static  String configurationSetName;
+    protected static String configurationSetName;
 
     @Test
     public void CreateConfigurationSet() throws IOException {

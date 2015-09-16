@@ -1,6 +1,5 @@
 package ui;
 
-import operators.base.LinkOperator;
 import operators.projects.ProjectPageOperator;
 import org.junit.*;
 import org.junit.Test;
