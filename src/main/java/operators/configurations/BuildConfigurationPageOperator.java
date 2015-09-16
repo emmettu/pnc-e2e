@@ -28,4 +28,11 @@ public class BuildConfigurationPageOperator extends Operator {
         new SubmitOperator().submit();
     }
 
+    public void buildBuildConfiguration() {
+        new LinkOperator(Elements.CONFIGURATION_LINK).clickLink();
+        new LinkOperator(Elements.BUILD_CONFIGURATION_LINK).clickLink();
+        new LinkOperator(name).clickLink();
+        new ButtonOperator(Elements.BUILD_BUILD_CONFIGURATION_BUTTON).clickButton();
+    }
+
 }

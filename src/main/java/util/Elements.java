@@ -49,6 +49,7 @@ public class Elements {
     public static final String BUILD_CONFIGURATION_BUILD_SCRIPT = "buildScript";
     public static final String BUILD_CONFIGURATION_PRODUCT = "createCtrl.products.selected";
     public static final String BUILD_CONFIGURATION_ENVIRONMENT ="createCtrl.data.environmentId";
+    public static final String BUILD_BUILD_CONFIGURATION_BUTTON ="Start Build";
 
     public static final String BUILD_CONFIGURATION_NAME_P = "input-name";
     public static final String BUILD_CONFIGURATION_DESCRIPTION_P = "input-description";
@@ -70,5 +71,8 @@ public class Elements {
     public static final String RELEASE_MILESTONE = "releaseCreateUpdateCtrl.productMilestoneId";
     public static final String RELEASE_SUPPORT_LEVEL = "releaseCreateUpdateCtrl.data.supportLevel";
     public static final String RELEASE_URL = "downloadurl";
+
+    public static final String BUILDS_LINK = "Builds";
+    public static final String BUILD_RECORD_LINK = "Builds Records";
 
 }
