@@ -54,11 +54,12 @@ public class Elements {
     public static final String BUILD_CONFIGURATION_NAME_P = "input-name";
     public static final String BUILD_CONFIGURATION_DESCRIPTION_P = "input-description";
     public static final String BUILD_CONFIGURATION_SCM_URL_P = "input-scm-repo-url";
-    public static final String BUILD_CONFIGURATION_SCM_REVISION_P = "input-scm-revision";
 
     public static final String BUILD_CONFIGURATION_SET_LINK = "Build Configuration Sets";
     public static final String CREATE_CONFIGURATION_SET_BUTTON = "Create Build Configuration Set";
     public static final String BUILD_CONFIGURATION_SET_INPUT = "name";
+    public static final String BUILD_CONFIGURATION_SCM_REVISION_P = "input-scm-revision";
+    public static final String BUILD_BUILD_CONFIGURATION_SET_BUTTON ="Start Build";
 
     public static final String CREATE_MILESTONE_BUTTON = "Create Milestone";
     public static final String MILESTONE_VERSION_INPUT = "version";
@@ -74,5 +75,6 @@ public class Elements {
 
     public static final String BUILDS_LINK = "Builds";
     public static final String BUILD_RECORD_LINK = "Builds Records";
+    public static final String BUILD_CONFIGURATION_SET_RECORDS_LINK = "Build Configuration Set Records";
 
 }

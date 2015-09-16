@@ -22,4 +22,5 @@ public class BuildRecordTest extends UITest {
         assertLinkExists(configurationName);
 
     }
+
 }
