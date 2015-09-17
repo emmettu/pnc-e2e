@@ -1,5 +1,6 @@
 package ui;
 
+import operators.base.SearchOperator;
 import operators.projects.ProjectPageOperator;
 import org.junit.*;
 import org.junit.Test;
@@ -37,6 +38,19 @@ public class ProjectsTest extends UITest{
     public void projectExists() {
         tester.clickLink(Elements.PROJECT_LINK);
         assertLinkExists(projectName);
+    }
+
+    @Test
+    public void searchTest() {
+        String unsearchedProject = RandomName.getRandomName();
+
+        new ProjectPageOperator(unsearchedProject).newProject();
+
+        tester.clickLink(Elements.PROJECT_LINK);
+        new SearchOperator().search(projectName);
+
+        assertLinkExists(projectName);
+        assertLinkDoesNotExists(unsearchedProject);
     }
 
 }

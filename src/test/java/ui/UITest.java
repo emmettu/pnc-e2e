@@ -1,7 +1,11 @@
 package ui;
 
+import com.gargoylesoftware.htmlunit.ElementNotFoundException;
+import junit.framework.AssertionFailedError;
 import org.junit.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.NoSuchElementException;
 import util.UITester;
 
 /**
@@ -31,6 +35,17 @@ public class UITest {
     public void assertLinkExists(String linkName) {
         boolean visibility = tester.getDriver().findElement(By.linkText(linkName)).isEnabled();
         Assert.assertEquals(visibility, true);
+    }
+
+    public void assertLinkDoesNotExists(String linkName) {
+        try {
+            tester.getDriver().findElement(By.linkText(linkName)).isEnabled();
+        }
+        catch(NoSuchElementException e) {
+            return;
+        }
+
+        throw new AssertionFailedError(linkName + " was visible when it should not have been");
     }
 
 
