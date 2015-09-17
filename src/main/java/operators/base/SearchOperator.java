@@ -1,6 +1,5 @@
 package operators.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -12,7 +11,7 @@ public class SearchOperator extends Operator {
 
     public void search(String query) {
         String xpath = "//input[@ng-model='searchText']";
-        WebElement searchBar =  driver.findElement(By.xpath(xpath));
+        WebElement searchBar =  getElementByXpath(xpath);
 
         searchBar.click();
         searchBar.sendKeys(query);

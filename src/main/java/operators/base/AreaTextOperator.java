@@ -1,6 +1,5 @@
 package operators.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -14,7 +13,7 @@ public class AreaTextOperator extends Operator {
 
     public void textAreaInput(String inputString) {
         String inputXpath = String.format("//textarea[@name='%s']", name);
-        WebElement element = driver.findElement(By.xpath(inputXpath));
+        WebElement element = getElementByXpath(inputXpath);
         element.sendKeys(inputString);
     }
 }

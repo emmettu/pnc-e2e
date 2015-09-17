@@ -1,10 +1,11 @@
 package ui;
 
-import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import junit.framework.AssertionFailedError;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Rule;
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
 import util.UITester;
 
@@ -50,7 +51,8 @@ public class UITest {
 
 
     public void assertBuildRecordExists(String recordName) {
-        boolean visibility = tester.getDriver().findElement(By.partialLinkText(recordName)).isDisplayed();
+        String linkText = " — " + recordName;
+        boolean visibility = tester.getDriver().findElement(By.partialLinkText(linkText)).isDisplayed();
         Assert.assertEquals(visibility, true);
     }
 

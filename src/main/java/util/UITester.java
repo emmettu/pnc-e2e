@@ -1,9 +1,10 @@
 package util;
 
+import operators.SetUpOperator;
+import operators.TearDownOperator;
 import operators.base.*;
-import org.openqa.selenium.*;
-
-import operators.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * Created by eunderhi on 27/07/15.

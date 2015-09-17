@@ -1,6 +1,5 @@
 package operators.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -10,7 +9,7 @@ public class SubmitOperator extends Operator {
 
     public void submit(){
         String inputButtonXpath = "//input[@type='submit']";
-        WebElement element = driver.findElement(By.xpath(inputButtonXpath));
+        WebElement element = getElementByXpath(inputButtonXpath);
         element.click();
     }
 }

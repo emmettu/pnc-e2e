@@ -1,6 +1,5 @@
 package operators.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -14,7 +13,7 @@ public class ButtonOperator extends Operator {
 
     public void clickButton() {
         String buttonXpath = String.format("//button[@title='%s']", name);
-        WebElement element = driver.findElement(By.xpath(buttonXpath));
+        WebElement element = getElementByXpath(buttonXpath);
         element.click();
     }
 }

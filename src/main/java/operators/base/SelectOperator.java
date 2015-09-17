@@ -1,6 +1,5 @@
 package operators.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -16,7 +15,7 @@ public class SelectOperator extends Operator {
 
     public void clickSelect(int value) {
         String selectXpath = String.format("//select[@ng-model='%s']", name);
-        WebElement element = driver.findElement(By.xpath(selectXpath));
+        WebElement element = getElementByXpath(selectXpath);
         element.click();
         for (int i = 0; i < value; i++) {
             element.sendKeys(Keys.ARROW_DOWN);
@@ -26,7 +25,7 @@ public class SelectOperator extends Operator {
 
     public void clickFirstNonEmptySelect() {
         String selectXpath = String.format("//select[@ng-model='%s']", name);
-        WebElement element = driver.findElement(By.xpath(selectXpath));
+        WebElement element = getElementByXpath(selectXpath);
         element.click();
         Select select = new Select(element);
         String text = select.getFirstSelectedOption().getText();

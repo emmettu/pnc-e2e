@@ -1,6 +1,5 @@
 package operators.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -18,6 +17,6 @@ public class LinkOperator extends Operator {
     }
 
     public WebElement findLink() {
-        return driver.findElement(By.linkText(name));
+        return getElementByLinkText(name);
     }
 }

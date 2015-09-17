@@ -1,6 +1,9 @@
 package operators.base;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * Created by eunderhi on 09/09/15.
@@ -18,6 +21,24 @@ public abstract class Operator {
 
     public static WebDriver getDriver() {
         return driver;
+    }
+
+    public WebElement getElementByXpath(String xpath) {
+        try {
+            return driver.findElement(By.xpath(xpath));
+        }
+        catch(NoSuchElementException e) {
+            throw new AssertionError("Failed to find xpath element: "+xpath);
+        }
+    }
+
+    public WebElement getElementByLinkText(String linkText) {
+        try {
+            return driver.findElement(By.linkText(linkText));
+        }
+        catch(NoSuchElementException e) {
+            throw new AssertionError("Failed to find link: "+linkText);
+        }
     }
 
 }

@@ -1,6 +1,5 @@
 package operators.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -14,7 +13,7 @@ public class SpanOperator extends Operator {
 
     public WebElement findSpan() {
         String spanXpath = String.format("//span[text()='%s']", name);
-        return driver.findElement(By.xpath(spanXpath));
+        return getElementByXpath(spanXpath);
     }
 
 }

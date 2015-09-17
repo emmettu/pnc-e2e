@@ -1,15 +1,11 @@
 package ui;
 
-import operators.base.LinkOperator;
 import operators.base.ParagraphOperator;
 import operators.configurations.BuildConfigurationSetPageOperator;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import util.Elements;
 import util.RandomName;
-
-import java.io.IOException;
 
 /**
  * Created by eunderhi on 28/07/15.

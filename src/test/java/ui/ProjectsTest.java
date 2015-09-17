@@ -2,7 +2,8 @@ package ui;
 
 import operators.base.SearchOperator;
 import operators.projects.ProjectPageOperator;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import util.Elements;
 import util.RandomName;

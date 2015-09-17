@@ -1,6 +1,5 @@
 package operators.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -19,7 +18,7 @@ public class ParagraphOperator extends Operator {
 
     public WebElement findParagraph() {
         String pXpath = String.format("//p[@id='%s']", name);
-        return driver.findElement(By.xpath(pXpath));
+        return getElementByXpath(pXpath);
     }
 
 }

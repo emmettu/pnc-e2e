@@ -1,6 +1,5 @@
 package operators.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -10,7 +9,7 @@ public class CheckBoxOperator extends  Operator {
 
     public void clickCheckBox() {
         String checkBoxXpath = "//input[@type='checkbox']";
-        WebElement element = driver.findElement(By.xpath(checkBoxXpath));
+        WebElement element = getElementByXpath(checkBoxXpath);
         element.click();
     }
 }
