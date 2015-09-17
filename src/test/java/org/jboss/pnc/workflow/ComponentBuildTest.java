@@ -30,12 +30,14 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+@Ignore
 public class ComponentBuildTest {
     private static final Logger LOGGER = Logger.getLogger(ComponentBuildTest.class.toString());
 
