@@ -67,7 +67,7 @@ public class Elements {
     public static final String CREATE_MILESTONE_BUTTON = "Create Milestone";
     public static final String MILESTONE_VERSION_INPUT = "version";
     public static final String MILESTONE_START_DATE = "startingDate";
-    public static final String MILESTONE_RELEASE_DATE = "plannedReleaseDate";
+    public static final String MILESTONE_RELEASE_DATE = "plannedEndDate";
 
     public static final String CREATE_RELEASE_BUTTON = "Create Release";
     public static final String RELEASE_VERSION_INPUT = "version";

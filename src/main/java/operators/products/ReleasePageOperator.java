@@ -23,9 +23,7 @@ public class ReleasePageOperator extends Operator {
        new SelectOperator(Elements.RELEASE_MILESTONE).clickFirstNonEmptySelect();
        new SelectOperator(Elements.RELEASE_SUPPORT_LEVEL).clickFirstNonEmptySelect();
        new TextInputOperator(Elements.RELEASE_URL).insertInput(Strings.RELEASE_URL);
-       new ScreenShotOperator("justBeforeReleaseSubmit").takeScreenshot("./screenshots");
        new SubmitOperator().submit();
-       new ScreenShotOperator("justAfterReleaseSubmit").takeScreenshot("./screenshots");
    }
 
 }

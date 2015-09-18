@@ -34,8 +34,12 @@ public class UITest {
     }
 
     public void assertLinkExists(String linkName) {
-        boolean visibility = tester.getDriver().findElement(By.linkText(linkName)).isEnabled();
-        Assert.assertEquals(visibility, true);
+        try {
+            tester.getDriver().findElement(By.linkText(linkName)).isEnabled();
+        }
+        catch (NoSuchElementException e) {
+            throw new AssertionFailedError("link " + linkName + " does not exist when it should");
+        }
     }
 
     public void assertLinkDoesNotExists(String linkName) {
@@ -46,14 +50,18 @@ public class UITest {
             return;
         }
 
-        throw new AssertionFailedError(linkName + " was visible when it should not have been");
+        throw new AssertionFailedError("link " + linkName + " was visible when it should not have been");
     }
 
 
     public void assertBuildRecordExists(String recordName) {
         String linkText = " — " + recordName;
-        boolean visibility = tester.getDriver().findElement(By.partialLinkText(linkText)).isDisplayed();
-        Assert.assertEquals(visibility, true);
+        try {
+            tester.getDriver().findElement(By.partialLinkText(linkText)).isDisplayed();
+        }
+        catch (NoSuchElementException e) {
+            throw new AssertionFailedError("Build record " + recordName + " does not exist when it should");
+        }
     }
 
 }
