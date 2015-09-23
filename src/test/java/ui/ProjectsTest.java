@@ -4,6 +4,7 @@ import operators.base.SearchOperator;
 import operators.projects.ProjectPageOperator;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import util.Elements;
 import util.RandomName;
@@ -42,6 +43,7 @@ public class ProjectsTest extends UITest{
     }
 
     @Test
+    @Ignore
     public void searchTest() {
         String unsearchedProject = RandomName.getRandomName();
 
