@@ -65,6 +65,7 @@ public class Elements {
     public static final String ADD_BUILD_CONFIGURATION_BUTTON ="Add an existing Build Configuration";
     public static final String ADD_BUILD_CONFIGURATION_SELECT ="addConfigurationSetCtrl.data.selectedProjectId";
     public static final String BUILD_CONFIGURATION_SET_NAME_P ="input-name";
+    public static final String BUILD_CONFIGURATION_SET_DELETE_BUTTON ="Delete Set";
 
     public static final String CREATE_MILESTONE_BUTTON = "Create Milestone";
     public static final String MILESTONE_VERSION_INPUT = "version";

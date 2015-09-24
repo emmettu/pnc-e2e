@@ -32,4 +32,21 @@ public class ConfigurationSetTest extends UITest {
         Assert.assertEquals(pageText, configurationSetName);
     }
 
+    @Test
+    public void deleteConfigurationSet() {
+        configurationSetName = RandomName.getRandomName();
+        new BuildConfigurationSetPageOperator(configurationSetName).createBuildConfigurationSet();
+
+        tester.clickLink(Elements.CONFIGURATION_LINK);
+        tester.clickLink(Elements.BUILD_CONFIGURATION_SET_LINK);
+        tester.clickLink(configurationSetName);
+
+        tester.clickButton(Elements.BUILD_CONFIGURATION_SET_DELETE_BUTTON);
+        tester.getDriver().switchTo().alert().accept();
+
+        tester.clickLink(Elements.CONFIGURATION_LINK);
+        tester.clickLink(Elements.BUILD_CONFIGURATION_SET_LINK);
+        assertLinkDoesNotExists(configurationSetName);
+    }
+
 }
