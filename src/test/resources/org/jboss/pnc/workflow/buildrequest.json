@@ -1,0 +1,11 @@
+{
+"pncUsername" : "ruhan",
+"pncUserLoginToken" : "",
+"pncUserEmail" : "ruhan@redhat.com",
+"buildConfigurationRevision" : 1,
+"buildTaskId" : 2,
+"buildSetTaskId" : 1,
+"buildRecordSetIdsCSV" : "xyz",
+"buildConfigSetRecordId" : "abc",
+"submitTimeMillis" : 1000
+}

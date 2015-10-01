@@ -1,5 +1,24 @@
 package org.jboss.pnc.workflow;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URLEncoder;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
@@ -18,20 +37,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URLEncoder;
-import java.text.MessageFormat;
-import java.util.*;
-import java.util.logging.Logger;
-
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 @Ignore
 public class ComponentBuildTest {
     private static final Logger LOGGER = Logger.getLogger(ComponentBuildTest.class.toString());
@@ -41,10 +46,12 @@ public class ComponentBuildTest {
     private String pncRestBaseUrl;
     private String repourRestBaseUrl;
     private String daRestBaseUrl;
+    private String jenkinsBaseUrl;
+    private String aproxBaseUrl;
 
     private boolean isWait;
 
-    private final String processDefId = "ComponentBuild.componentbuild";
+    private final String processDefId = "ncl-workflows.componentbuild";
 
     @Before
     public void setUp() throws Exception {
@@ -56,8 +63,10 @@ public class ComponentBuildTest {
         pncRestBaseUrl = System.getProperty("pnc.restBaseUrl");
         repourRestBaseUrl = System.getProperty("repour.restBaseUrl");
         daRestBaseUrl = System.getProperty("da.restBaseUrl");
+        jenkinsBaseUrl = System.getProperty("jenkins.restBaseUrl");
+        aproxBaseUrl = System.getProperty("aprox.restBaseUrl");
 
-        isWait = "true".equals(System.getProperty("maitai.waitPncCallback"));
+        // isWait = "true".equals(System.getProperty("maitai.waitPncCallback"));
     }
 
     // [GET] /deployment
@@ -82,7 +91,7 @@ public class ComponentBuildTest {
      *   ...
      *   <deployment-unit>
      *     <groupId>com.redhat.maitai.ncl</groupId>
-     *     <artifactId>ComponentBuild</artifactId>
+     *     <artifactId>ncl-workflows</artifactId>
      *     <version>1.0.3</version>
      *     <kbaseName/>
      *     <ksessionName/>
@@ -105,7 +114,7 @@ public class ComponentBuildTest {
                 String groupId = eElement.getElementsByTagName("groupId").item(0).getTextContent();
                 String artifactId = eElement.getElementsByTagName("artifactId").item(0).getTextContent();
                 String version = eElement.getElementsByTagName("version").item(0).getTextContent();
-                if ("com.redhat.maitai.ncl:ComponentBuild".equals(groupId + ":" + artifactId)) {
+                if ("com.redhat.maitai.ncl:ncl-workflows".equals(groupId + ":" + artifactId)) {
                     l.add(groupId + ":" + artifactId + ":" + version);
                 }
             }
@@ -130,6 +139,7 @@ public class ComponentBuildTest {
     // [GET] /runtime/{deploymentId}/history/instance/{procInstId}/variable/{varId}
     private static final String REST_GET_VAR = "/runtime/{0}/history/instance/{1}/variable/{2}";
 
+    @SuppressWarnings("deprecation")
     private static HttpClient getHttpClient() {
         HttpClient client = new DefaultHttpClient();
         return client;
@@ -186,8 +196,14 @@ public class ComponentBuildTest {
         StringBuffer sb = new StringBuffer(applicationContext + MessageFormat.format(REST_START, deploymentId, processDefId));
         sb.append("?map_paramsJSON=");
         sb.append(getParamsJSONEncoded("compbuild.json"));
-        sb.append("&map_restBaseUrl=");
+        sb.append("&map_buildRequestJSON=");
+        sb.append(getParamsJSONEncoded("buildrequest.json"));
+        sb.append("&map_pncBaseUrl=");
         sb.append(URLEncoder.encode(pncRestBaseUrl, "UTF-8"));
+        sb.append("&map_jenkinsBaseUrl=");
+        sb.append(URLEncoder.encode(jenkinsBaseUrl, "UTF-8"));
+        sb.append("&map_aproxBaseUrl=");
+        sb.append(URLEncoder.encode(aproxBaseUrl, "UTF-8"));
         sb.append("&map_repourBaseUrl=");
         sb.append(URLEncoder.encode(repourRestBaseUrl, "UTF-8"));
         sb.append("&map_daBaseUrl=");
@@ -289,7 +305,7 @@ public class ComponentBuildTest {
      * <process-instance>
      *   <status>SUCCESS</status>
      *   <url>http://localhost:8080</url>
-     *   <process-id>ComponentBuild.componentbuild</process-id>
+     *   <process-id>ncl-workflows.componentbuild</process-id>
      *   <id>14</id>
      *   <state>1</state>
      *   <event-types>pncCallback</event-types>
@@ -314,13 +330,13 @@ public class ComponentBuildTest {
      * <log-instance-list>
      *   <variable-instance-log id="403">
      *     <process-instance-id>15</process-instance-id>
-     *     <process-id>ComponentBuild.componentbuild</process-id>
+     *     <process-id>ncl-workflows.componentbuild</process-id>
      *     <date>2015-08-07T17:17:42+08:00</date>
      *     <variable-instance-id>callbackData</variable-instance-id>
      *     <variable-id>callbackData</variable-id>
      *     <value>DONE</value>
      *     <oldValue></oldValue>
-     *     <external-id>com.redhat.maitai.ncl:ComponentBuild:1.0.3</external-id>
+     *     <external-id>com.redhat.maitai.ncl:ncl-workflows:1.0.3</external-id>
      *   </variable-instance-log>
      * </log-instance-list>
      * </pre>
