@@ -1,5 +1,7 @@
 package ui;
 
+import operators.base.LinkOperator;
+import operators.base.RefreshOperator;
 import operators.base.SearchOperator;
 import operators.projects.ProjectPageOperator;
 import org.junit.Assert;
@@ -38,7 +40,8 @@ public class ProjectsTest extends UITest{
 
     @Test
     public void projectExists() {
-        tester.clickLink(Elements.PROJECT_LINK);
+        new RefreshOperator().refresh();
+        new LinkOperator(Elements.PROJECTS).clickLink();
         assertLinkExists(projectName);
     }
 

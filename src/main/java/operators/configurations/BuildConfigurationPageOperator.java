@@ -32,7 +32,7 @@ public class BuildConfigurationPageOperator extends Operator {
         new LinkOperator(Elements.CONFIGURATION_LINK).clickLink();
         new LinkOperator(Elements.BUILD_CONFIGURATION_LINK).clickLink();
         new LinkOperator(name).clickLink();
-        new ButtonOperator(Elements.BUILD_BUILD_CONFIGURATION_BUTTON).clickButton();
+        new BuildOperator().startBuild();
     }
 
 }
