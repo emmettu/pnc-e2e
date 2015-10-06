@@ -5,6 +5,8 @@ package util;
  */
 public class Elements {
 
+    public static final String LOGIN = "Login";
+
     public static final String DASHBOARD = "Dashboard";
     public static final String PRODUCT_LINK = "Products";
     public static final String PROJECT_LINK = "Projects";

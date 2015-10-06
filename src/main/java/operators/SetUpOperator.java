@@ -40,10 +40,10 @@ public class SetUpOperator extends Operator {
 
     private void loginOrGoToBaseURL() {
         if(creds.hasLoginURL()) {
-            String loginURL = creds.getLoginURL();
             String username = creds.getUsername();
             String password = creds.getPassword();
-            new LoginOperator().login(loginURL, username, password);
+            String loginUrl = creds.getLoginURL();
+            new LoginOperator().login(loginUrl, username, password);
         }
         else {
             String baseURL = creds.getBaseURL();
