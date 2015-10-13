@@ -1,5 +1,6 @@
 package ui;
 
+import operators.base.ConfirmOperator;
 import operators.configurations.BuildConfigurationPageOperator;
 import org.junit.Assert;
 import org.junit.Before;
@@ -64,7 +65,7 @@ public class BuildConfigurationsTest extends UITest {
         tester.clickLink(configurationName);
 
         tester.clickButton(Elements.BUILD_CONFIGURATION_DELETE_BUTTON);
-        tester.getDriver().switchTo().alert().accept();
+        new ConfirmOperator().confirm();
 
         tester.clickLink(Elements.CONFIGURATION_LINK);
         tester.clickLink(Elements.BUILD_CONFIGURATION_LINK);

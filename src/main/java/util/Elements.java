@@ -85,4 +85,5 @@ public class Elements {
     public static final String BUILD_RECORD_LINK = "Builds Records";
     public static final String BUILD_CONFIGURATION_SET_RECORDS_LINK = "Build Configuration Set Records";
 
+    public static final String CONFIRM_BUTTON = "confirm()";
 }

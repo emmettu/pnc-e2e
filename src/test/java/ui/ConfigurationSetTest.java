@@ -1,5 +1,6 @@
 package ui;
 
+import operators.base.ConfirmOperator;
 import operators.base.ParagraphOperator;
 import operators.configurations.BuildConfigurationSetPageOperator;
 import org.junit.Assert;
@@ -42,7 +43,8 @@ public class ConfigurationSetTest extends UITest {
         tester.clickLink(configurationSetName);
 
         tester.clickButton(Elements.BUILD_CONFIGURATION_SET_DELETE_BUTTON);
-        tester.getDriver().switchTo().alert().accept();
+        tester.getDriver().switchTo().activeElement();
+        new ConfirmOperator().confirm();
 
         tester.clickLink(Elements.CONFIGURATION_LINK);
         tester.clickLink(Elements.BUILD_CONFIGURATION_SET_LINK);
