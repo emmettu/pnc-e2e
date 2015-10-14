@@ -6,9 +6,6 @@ package util;
 public class Strings {
 
     public static final String PRODUCT_DESCRIPTION = "test description";
-    public static final String PRODUCT_ABBREVIATION = "test abbreviation";
-    public static final String PRODUCT_CODE = "test code";
-    public static final String PRODUCT_SYSTEM_NAME = "test system name";
     public static final String PRODUCT_VERSION = "1.9";
 
     public static final String PROJECT_DESCRIPTION = "test description";
