@@ -19,7 +19,7 @@ public class BuildConfigurationSetRecordsTest extends UITest {
         operator.buildBuildConfigurationSet();
         tester.clickLink(Elements.BUILDS_LINK);
         tester.clickLink(Elements.BUILD_CONFIGURATION_SET_RECORDS_LINK);
-        assertBuildRecordExists(configurationName);
+        assertLinkExists(configurationName);
     }
 
 }
