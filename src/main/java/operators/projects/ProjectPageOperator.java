@@ -14,6 +14,7 @@ public class ProjectPageOperator extends Operator {
     }
 
     public void newProject() {
+        new LinkOperator(Elements.BUILD_CONFIGURATION_LINK).clickLink();
         new LinkOperator(Elements.PROJECT_LINK).clickLink();
         new ButtonOperator(Elements.CREATE_PROJECT_BUTTON).clickButton();
         new TextInputOperator(Elements.PROJECT_NAME).insertInput(name);

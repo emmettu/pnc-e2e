@@ -8,7 +8,7 @@ public class Elements {
     public static final String LOGIN = "Login";
 
     public static final String PRODUCT_LINK = "Products";
-    public static final String PROJECT_LINK = "Projects";
+    public static final String PROJECT_LINK = "Projects Metadata";
     public static final String CREATE_PRODUCT_BUTTON = "Create Product";
     public static final String PRODUCT_NAME = "name";
     public static final String PROJECT_NAME = "name";
@@ -19,8 +19,7 @@ public class Elements {
     public static final String CREATE_VERSION_BUTTON = "Create Product Version";
     public static final String VERSION_INPUT = "version";
     public static final String PRODUCT_SYSTEM_CODE = "pgmSystemName";
-    public static final String PROJECTS = "Projects";
-    public static final String CREATE_PROJECT_BUTTON = "Create Project";
+    public static final String CREATE_PROJECT_BUTTON = "Create Project Metadata";
 
     public static final String PROJECT_URL = "projectUrl";
     public static final String PROJECT_ISSUE_URL = "issueTrackerUrl";
@@ -35,9 +34,9 @@ public class Elements {
     public static final String PROJECT_URL_PARAGRAPH = "input-url";
     public static final String PROJECT_ISSUE_URL_PARAGRAPH = "input-issue-tracker";
 
-    public static final String CONFIGURATION_LINK = "Configurations";
-    public static final String BUILD_CONFIGURATION_LINK = "Build Configurations";
-    public static final String CREATE_CONFIGURATION_BUTTON = "Create Configuration";
+    public static final String CONFIGURATION_LINK = "Build Configs";
+    public static final String BUILD_CONFIGURATION_LINK = "Build Configs";
+    public static final String CREATE_CONFIGURATION_BUTTON = "Create Config";
     public static final String BUILD_CONFIGURATION_INPUT = "name";
     public static final String BUILD_CONFIGURATION_PROJECT_SELECT = "createCtrl.data.projectId";
     public static final String BUILD_CONFIGURATION_DESCRIPTION = "description";

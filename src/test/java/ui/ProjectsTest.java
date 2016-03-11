@@ -15,7 +15,7 @@ import util.Strings;
 /**
  * Created by eunderhi on 29/07/15.
  */
-public class ProjectsTest extends UITest{
+public class ProjectsTest extends UITest {
 
     private static  String projectName;
 
@@ -41,7 +41,8 @@ public class ProjectsTest extends UITest{
     @Test
     public void projectExists() {
         new RefreshOperator().refresh();
-        new LinkOperator(Elements.PROJECTS).clickLink();
+        new LinkOperator(Elements.CONFIGURATION_LINK).clickLink();
+        new LinkOperator(Elements.PROJECT_LINK).clickLink();
         assertLinkExists(projectName);
     }
 
