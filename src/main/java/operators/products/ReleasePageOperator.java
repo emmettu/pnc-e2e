@@ -15,6 +15,7 @@ public class ReleasePageOperator extends Operator {
 
    public void createRelease() throws InterruptedException {
        new LinkOperator(Elements.PRODUCT_LINK).clickLink();
+       new RefreshOperator().refresh();
        new LinkOperator(name).clickLink();
        new LinkOperator(Strings.PRODUCT_VERSION).clickLink();
        new ButtonOperator(Elements.CREATE_RELEASE_BUTTON).clickButton();
@@ -22,7 +23,8 @@ public class ReleasePageOperator extends Operator {
        new TextInputOperator(Elements.RELEASE_DATE).insertInput(Strings.RELEASE_DATE);
        new SelectOperator(Elements.RELEASE_MILESTONE).clickFirstNonEmptySelect();
        new SelectOperator(Elements.RELEASE_SUPPORT_LEVEL).clickFirstNonEmptySelect();
-       new TextInputOperator(Elements.RELEASE_URL).insertInput(Strings.RELEASE_URL);
+       new TextInputOperator(Elements.RELEASE_DOWNLOAD_URL).insertInput(Strings.RELEASE_URL);
+       new TextInputOperator(Elements.RELEASE_ISSUE_URL).insertInput(Strings.RELEASE_URL);
        new SubmitOperator().submit();
    }
 

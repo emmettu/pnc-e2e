@@ -66,13 +66,15 @@ public class Elements {
     public static final String MILESTONE_VERSION_INPUT = "version";
     public static final String MILESTONE_START_DATE = "startingDate";
     public static final String MILESTONE_RELEASE_DATE = "plannedEndDate";
+    public static final String MILESTONE_URL = "issuetrackerurl";
 
     public static final String CREATE_RELEASE_BUTTON = "Create Release";
     public static final String RELEASE_VERSION_INPUT = "version";
     public static final String RELEASE_DATE = "releaseDate";
     public static final String RELEASE_MILESTONE = "releaseCreateUpdateCtrl.productMilestoneId";
     public static final String RELEASE_SUPPORT_LEVEL = "releaseCreateUpdateCtrl.data.supportLevel";
-    public static final String RELEASE_URL = "downloadurl";
+    public static final String RELEASE_DOWNLOAD_URL = "downloadurl";
+    public static final String RELEASE_ISSUE_URL = "issuetrackerurl";
 
     public static final String BUILDS_LINK = "Builds";
     public static final String BUILD_RECORD_LINK = "Builds Records";

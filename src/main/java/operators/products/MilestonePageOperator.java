@@ -15,12 +15,14 @@ public class MilestonePageOperator extends Operator {
 
     public void createMilestone() {
         new LinkOperator(Elements.PRODUCT_LINK).clickLink();
+        new RefreshOperator().refresh();
         new LinkOperator(name).clickLink();
         new LinkOperator(Strings.PRODUCT_VERSION).clickLink();
         new ButtonOperator(Elements.CREATE_MILESTONE_BUTTON).clickButton();
         new TextInputOperator(Elements.MILESTONE_VERSION_INPUT).insertInput(Strings.MILESTONE_VERSION_INPUT);
         new TextInputOperator(Elements.MILESTONE_START_DATE).insertInput(Strings.MILESTONE_START_DATE);
         new TextInputOperator(Elements.MILESTONE_RELEASE_DATE).insertInput(Strings.MILESTONE_RELEASE_DATE);
+        new TextInputOperator(Elements.MILESTONE_URL).insertInput(Strings.MILESTONE_URL);
         new SubmitOperator().submit();
     }
 
