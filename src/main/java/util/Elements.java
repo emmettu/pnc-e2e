@@ -37,7 +37,7 @@ public class Elements {
 
     public static final String CONFIGURATION_LINK = "Build Configs";
     public static final String BUILD_CONFIGURATION_LINK = "Build Configs";
-    public static final String CREATE_CONFIGURATION_BUTTON = "Create Config";
+    public static final String CREATE_CONFIGURATION_BUTTON = "Create Build Group Config";
     public static final String BUILD_CONFIGURATION_INPUT = "name";
     public static final String BUILD_CONFIGURATION_PROJECT_SELECT = "createCtrl.data.projectId";
     public static final String BUILD_CONFIGURATION_DESCRIPTION = "description";

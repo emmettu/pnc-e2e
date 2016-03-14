@@ -1,5 +1,6 @@
 package ui.builds;
 
+import operators.base.RefreshOperator;
 import operators.configurations.BuildConfigurationSetPageOperator;
 import org.junit.Test;
 import ui.UITest;
@@ -19,6 +20,7 @@ public class BuildConfigurationSetRecordsTest extends UITest {
         operator.buildBuildConfigurationSet();
         tester.clickLink(Elements.BUILDS_LINK);
         tester.clickLink(Elements.BUILD_CONFIGURATION_SET_RECORDS_LINK);
+        new RefreshOperator().refresh();
         assertLinkExists(configurationName);
     }
 

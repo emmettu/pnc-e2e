@@ -23,6 +23,7 @@ public class BuildConfigurationSetPageOperator extends Operator {
     public void buildBuildConfigurationSet() {
         new LinkOperator(Elements.CONFIGURATION_LINK).clickLink();
         new LinkOperator(Elements.BUILD_CONFIGURATION_SET_LINK).clickLink();
+        new RefreshOperator().refresh();
         new LinkOperator(name).clickLink();
         new BuildOperator().startBuild();
     }

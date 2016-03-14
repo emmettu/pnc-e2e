@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
  */
 public class SubmitOperator extends Operator {
 
-    public void submit(){
+    public void submit() {
         String inputButtonXpath = "//input[@type='submit']";
         WebElement element = getElementByXpath(inputButtonXpath);
         element.click();

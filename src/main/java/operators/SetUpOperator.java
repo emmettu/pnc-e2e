@@ -16,7 +16,6 @@ public class SetUpOperator extends Operator {
     private static final int LOAD_WAIT_TIME = 5;
 
     public void setUp() {
-
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(LOAD_WAIT_TIME, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1024, 768));

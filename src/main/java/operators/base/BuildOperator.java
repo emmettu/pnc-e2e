@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
  */
 public class BuildOperator extends Operator {
     public void startBuild() {
-        WebElement startButton = driver.findElement(By.xpath("//button[@tooltip='Run Build Group']"));
+        WebElement startButton = driver.findElement(By.xpath("//button[contains(@ng-click, 'build()')]"));
         startButton.click();
     }
 }

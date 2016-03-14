@@ -1,6 +1,7 @@
 package operators.configurations;
 
 import operators.base.*;
+import util.Credentials;
 import util.Elements;
 import util.Strings;
 
@@ -14,8 +15,6 @@ public class BuildConfigurationPageOperator extends Operator {
     }
 
     public void createBuildConfiguration() {
-        new LinkOperator(Elements.CONFIGURATION_LINK).clickLink();
-        new LinkOperator(Elements.BUILD_CONFIGURATION_LINK).clickLink();
         new ButtonOperator(Elements.CREATE_CONFIGURATION_BUTTON).clickButton();
         new TextInputOperator(Elements.BUILD_CONFIGURATION_INPUT).insertInput(name);
         new SelectOperator(Elements.BUILD_CONFIGURATION_PROJECT_SELECT).clickSelect(2);
