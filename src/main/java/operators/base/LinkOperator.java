@@ -11,12 +11,22 @@ public class LinkOperator extends Operator {
         super(name);
     }
 
+    public void clickAndRefresh() {
+        clickLink();
+        new RefreshOperator().refresh();
+    }
+
     public void clickLink() {
         WebElement element = findLink();
         element.click();
     }
 
     public WebElement findLink() {
-        return getElementByLinkText(name);
+        return findLink(0);
     }
+
+    public WebElement findLink(int n) {
+        return getElementByLinkText(name, n);
+    }
+
 }

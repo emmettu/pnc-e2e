@@ -32,9 +32,9 @@ public abstract class Operator {
         }
     }
 
-    public WebElement getElementByLinkText(String linkText) {
+    public WebElement getElementByLinkText(String linkText, int n) {
         try {
-            return driver.findElement(By.linkText(linkText));
+            return driver.findElements(By.linkText(linkText)).get(n);
         }
         catch(NoSuchElementException e) {
             throw new AssertionError("Failed to find link: "+linkText);

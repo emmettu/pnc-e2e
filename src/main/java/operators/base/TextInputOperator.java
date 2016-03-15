@@ -16,4 +16,5 @@ public class TextInputOperator extends Operator {
         WebElement element = getElementByXpath(inputXpath);
         element.sendKeys(inputString);
     }
+
 }
