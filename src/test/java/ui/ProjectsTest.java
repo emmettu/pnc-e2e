@@ -17,7 +17,7 @@ import util.Strings;
  */
 public class ProjectsTest extends UITest {
 
-    private static  String projectName;
+    private static String projectName;
 
     @Before
     public void createProject() {

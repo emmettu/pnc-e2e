@@ -23,4 +23,5 @@ public class ProjectPageOperator extends Operator {
         new TextInputOperator(Elements.PROJECT_ISSUE_URL).insertInput(Strings.PROJECT_ISSUE_URL);
         new SubmitOperator().submit();
     }
+
 }

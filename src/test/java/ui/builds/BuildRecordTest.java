@@ -1,6 +1,6 @@
 package ui.builds;
 
-import operators.configurations.BuildConfigurationPageOperator;
+import operators.configurations.BuildConfigPageOperator;
 import org.junit.Test;
 import ui.UITest;
 import util.Elements;
@@ -14,7 +14,7 @@ public class BuildRecordTest extends UITest {
     @Test
     public void startBuildTest() {
         String configurationName = RandomName.getRandomName();
-        BuildConfigurationPageOperator operator = new BuildConfigurationPageOperator(configurationName);
+        BuildConfigPageOperator operator = new BuildConfigPageOperator(configurationName);
         operator.createBuildConfiguration();
         operator.buildBuildConfiguration();
         tester.clickLink(Elements.BUILDS_LINK);

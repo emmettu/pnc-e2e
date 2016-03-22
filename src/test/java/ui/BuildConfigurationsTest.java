@@ -1,11 +1,10 @@
 package ui;
 
 import operators.base.ConfirmOperator;
-import operators.configurations.BuildConfigurationPageOperator;
+import operators.configurations.BuildConfigPageOperator;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Keys;
 import util.Elements;
 import util.RandomName;
 import util.Strings;
@@ -21,7 +20,7 @@ public class BuildConfigurationsTest extends UITest {
     @Before
     public void createConfiguration() {
         configurationName = RandomName.getRandomName();
-        new BuildConfigurationPageOperator(configurationName).createBuildConfiguration();
+        new BuildConfigPageOperator(configurationName).createBuildConfiguration();
     }
 
     @Test
