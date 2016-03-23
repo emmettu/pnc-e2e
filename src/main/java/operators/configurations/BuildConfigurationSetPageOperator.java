@@ -33,6 +33,7 @@ public class BuildConfigurationSetPageOperator extends Operator {
         new LinkOperator(Elements.BUILD_CONFIGURATION_SET_LINK).clickLink();
         new LinkOperator(name).clickLink();
         new ButtonOperator(Elements.ADD_BUILD_CONFIGURATION_BUTTON).clickButton();
+        new SelectOperator(Elements.ADD_BUILD_CONFIGURATION_PROJECT_SELECT).clickFirstNonEmptySelect();
         new SelectOperator(Elements.ADD_BUILD_CONFIGURATION_SELECT).clickFirstNonEmptySelect();
         new CheckBoxOperator().clickCheckBox();
         new SubmitOperator().submit();
